@@ -1,0 +1,28 @@
+.main-menu{
+    width: 100%;
+    display:block;
+    flex-direction: row;
+    z-index: 1;
+    margin: 0 auto;
+}
+.menu-styles{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+ul{
+    display: flex;
+    flex-direction: row;
+
+    
+}
+
+li{
+    list-style: none;
+    margin: 1rem;
+    flex-direction: row;
+    
+}
+
+@media 
