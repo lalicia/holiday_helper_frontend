@@ -5,7 +5,7 @@ import "./HomeButtons.css";
 function HomeButtons({ iconName, title }) {
   return (
     <>
-      <Icon icon={iconName} />
+      <Icon className="Icon" icon={iconName} />
       <p>{title}</p>
     </>
   );
