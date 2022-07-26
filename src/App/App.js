@@ -10,8 +10,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-    <Navbar />
     <Router>
+    <Navbar />
       <Routes>
         <Route path= '/' element={<Main />} />
         <Route path= '/packing-list' element={<Packing />} />
