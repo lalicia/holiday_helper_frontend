@@ -1,25 +1,24 @@
 import React, {useState} from 'react'
 import './Navbar.css';
 import { Link } from "react-router-dom"
-// import Hamburger from 'hamburger-react'
-// import { Close, MenuOutlined } from '@material-ui/icons'
+import { Icon } from '@iconify/react';
 
 
 function Navbar() {
-  const [isOpen, setOpen] = useState(false)
+  const [active, setActive] = useState(false)
   const DisplayMenu = () => {
-    setOpen(!isOpen)
+    setActive(!active)
   }
   return (
-    <div className='menu-styles' >
-      <div className='logo'> logo</div>
+    <div className='header' >
+      <div className='headerlogo'> logo</div>
        
         <div className='menu'>
-          <nav>
+          <nav className={active ? 'navbar active':'Navbar' }>
           <ul >
-            {/* <div className='closed'>
-              <Close className='closed' onClick={DisplayMenu} />
-              </div> */}
+            <div className='closed'>
+              <Icon icon="mdi:window-close" className='close' onClick={DisplayMenu} />
+            </div>
               <li>
                 <Link to='/'>Home</Link>
               </li>
@@ -37,11 +36,9 @@ function Navbar() {
               </li>
             </ul>
         </nav>
-        {/* <div className="menubar">
-          <MenuOutlined className='menu' onClick={DisplayMenu} />
-        </div> */}
-
-        
+        <div className='hamburger-icon'>
+          <Icon icon="charm:menu-hamburger" className='hamburger-menu'onClick={DisplayMenu} />
+        </div>
        </div>
     </div>
   )
