@@ -13,7 +13,7 @@ function Exchange() {
   
 
   const myHeaders = new Headers();
-  myHeaders.append("apikey", "ceOxREYQmPl9dCBWITKCRKxEnL7Ydg4Z");
+  myHeaders.append("apikey", "WIJnzMcJXWp4pcA5HjOkrw6upvCHr0CJ");
   
   const requestOptions = {
     method: 'GET',
@@ -37,14 +37,69 @@ function Exchange() {
     getRates()
   }, [url])
 
-  // fetch("https://api.apilayer.com/fixer/timeseries?start_date={start_date}&end_date={end_date}", requestOptions)
 
 
-  
-  
+// let unix_timestamp = Date.now()
+
+// const date = new Date(unix_timestamp);
+// const year = date.getFullYear();
+// const month = (date.getMonth()+1);
+// const day = date.getDate();
+
+// const formattedTime = `${year}-${month}-${day}`;
+
+// // const number = Number(formattedTime);
+
+// console.log(formattedTime)
+// console.log(number)
+
+// const x = number - 30
+
+// console.log(x)
+
+// const today = new Date()
+// const yesterday = new Date(today)
+
+// yesterday.setDate(yesterday.getDate() - 1)
+
+// console.log(today.toDateString())
+// console.log(yesterday.toDateString())
+
+const yesterday = Date.now() - 86400000;
+const eightDays = Date.now() - 691200000;
+
+console.log(yesterday)
+
+let unix_timestamp = yesterday
+
+const date = new Date(unix_timestamp);
+
+const year = date.getFullYear();
+const month = (('0' + (date.getMonth()+1)).slice(-2));
+const day = ('0' + date.getDate()).slice(-2);
+
+const formattedTime = `${year}-${month}-${day}`;
+
+console.log(formattedTime)
+
+
+let unix_timestamp2 = eightDays
+
+const date2 = new Date(unix_timestamp2);
+
+const year2 = date2.getFullYear();
+const month2 = (('0' + (date2.getMonth()+1)).slice(-2));
+const day2 = ('0' + date2.getDate()).slice(-2);
+
+const formattedTime2 = `${year2}-${month2}-${day2}`;
+
+console.log(formattedTime2)
+
+
+
   function handleClick() {
     setUrl(`https://api.apilayer.com/fixer/convert?to=${to}&from=${from}&amount=${amount}`)
-    setHistorical(`https://api.apilayer.com/fixer/timeseries?start_date=2022-07-18&end_date=2022-07-25&base=${from}&symbols=${to}`)
+    setHistorical(`https://api.apilayer.com/fixer/timeseries?start_date=${formattedTime2}&end_date=${formattedTime}&base=${from}&symbols=${to}`)
   }
 
   return (
@@ -65,6 +120,8 @@ function Exchange() {
       <h3>{result}</h3>
       <button onClick={handleClick}>Get Rate</button>
       <h4>The last 7 days trend</h4>
+      {/* <h1>{current}</h1>
+      <h1>{prevDate}</h1> */}
     </>
   )
 }
