@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import './Navbar.css';
 import { Link } from "react-router-dom"
 // import Hamburger from 'hamburger-react'
-import { Close, MenuOutlined } from '@material-ui/icons'
+// import { Close, MenuOutlined } from '@material-ui/icons'
 
 
 function Navbar() {
@@ -17,9 +17,9 @@ function Navbar() {
         <div className='menu'>
           <nav>
           <ul >
-            <div className='closed'>
+            {/* <div className='closed'>
               <Close className='closed' onClick={DisplayMenu} />
-              </div>
+              </div> */}
               <li>
                 <Link to='/'>Home</Link>
               </li>
@@ -37,9 +37,9 @@ function Navbar() {
               </li>
             </ul>
         </nav>
-        <div className="menubar">
+        {/* <div className="menubar">
           <MenuOutlined className='menu' onClick={DisplayMenu} />
-        </div>
+        </div> */}
 
         
        </div>
