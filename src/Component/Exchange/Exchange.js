@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect, useState } from 'react';
+import {Chart, data} from "./Chart"
 
 function Exchange() {
 
@@ -13,7 +13,7 @@ function Exchange() {
   
 
   const myHeaders = new Headers();
-  myHeaders.append("apikey", "WIJnzMcJXWp4pcA5HjOkrw6upvCHr0CJ");
+  myHeaders.append("apikey", "YvAG8rpVVJsK2lU4u4TQ4XsG2pZJFxJu");
   
   const requestOptions = {
     method: 'GET',
@@ -29,8 +29,8 @@ function Exchange() {
       let data = await response.json()
       let data2 = await response2.json()
   
-      console.log(data)
-      console.log(data2)
+      // console.log(data)
+      console.log(data2.rates)
       setResult(data.result)
       setRate(data.info.rate)
     }
@@ -39,36 +39,10 @@ function Exchange() {
 
 
 
-// let unix_timestamp = Date.now()
-
-// const date = new Date(unix_timestamp);
-// const year = date.getFullYear();
-// const month = (date.getMonth()+1);
-// const day = date.getDate();
-
-// const formattedTime = `${year}-${month}-${day}`;
-
-// // const number = Number(formattedTime);
-
-// console.log(formattedTime)
-// console.log(number)
-
-// const x = number - 30
-
-// console.log(x)
-
-// const today = new Date()
-// const yesterday = new Date(today)
-
-// yesterday.setDate(yesterday.getDate() - 1)
-
-// console.log(today.toDateString())
-// console.log(yesterday.toDateString())
-
 const yesterday = Date.now() - 86400000;
 const eightDays = Date.now() - 691200000;
 
-console.log(yesterday)
+// console.log(yesterday)
 
 let unix_timestamp = yesterday
 
@@ -80,7 +54,7 @@ const day = ('0' + date.getDate()).slice(-2);
 
 const formattedTime = `${year}-${month}-${day}`;
 
-console.log(formattedTime)
+// console.log(formattedTime)
 
 
 let unix_timestamp2 = eightDays
@@ -93,7 +67,7 @@ const day2 = ('0' + date2.getDate()).slice(-2);
 
 const formattedTime2 = `${year2}-${month2}-${day2}`;
 
-console.log(formattedTime2)
+// console.log(formattedTime2)
 
 
 
@@ -101,6 +75,8 @@ console.log(formattedTime2)
     setUrl(`https://api.apilayer.com/fixer/convert?to=${to}&from=${from}&amount=${amount}`)
     setHistorical(`https://api.apilayer.com/fixer/timeseries?start_date=${formattedTime2}&end_date=${formattedTime}&base=${from}&symbols=${to}`)
   }
+
+  console.log()
 
   return (
     <>
@@ -120,10 +96,9 @@ console.log(formattedTime2)
       <h3>{result}</h3>
       <button onClick={handleClick}>Get Rate</button>
       <h4>The last 7 days trend</h4>
-      {/* <h1>{current}</h1>
-      <h1>{prevDate}</h1> */}
+      <Chart/>
     </>
   )
 }
 
-export default Exchange
+export default Exchange;
