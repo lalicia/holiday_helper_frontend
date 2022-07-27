@@ -11,7 +11,7 @@ function Exchange() {
   const [rate, setRate] = useState("")
   const [result, setResult] = useState("")
   
-
+  //needed to send through API fetch, will not accept apikey without this
   const myHeaders = new Headers();
   myHeaders.append("apikey", "YvAG8rpVVJsK2lU4u4TQ4XsG2pZJFxJu");
   
@@ -38,25 +38,31 @@ function Exchange() {
   }, [url])
 
 
-
+//gets today's date minus 24 hours, so YESTERDAY's date, as UNIX timestamp
 const yesterday = Date.now() - 86400000;
+//gets the date 8 days previous (using same method of subtracting from the UNIX timestamp)
 const eightDays = Date.now() - 691200000;
 
 // console.log(yesterday)
 
+
 let unix_timestamp = yesterday
 
+//converts UNIX timestamp to JS date/timestamp
 const date = new Date(unix_timestamp);
 
+//extrapolates year
 const year = date.getFullYear();
+//extrapolates month and turns into double-digit readout so 07 rather than 7 for eg. This required for API fetch parameters
 const month = (('0' + (date.getMonth()+1)).slice(-2));
+//extrapolates date and likewise gives double-digit readout
 const day = ('0' + date.getDate()).slice(-2);
 
 const formattedTime = `${year}-${month}-${day}`;
 
 // console.log(formattedTime)
 
-
+//code repeated to get the second date required for API fetch for historical rates
 let unix_timestamp2 = eightDays
 
 const date2 = new Date(unix_timestamp2);

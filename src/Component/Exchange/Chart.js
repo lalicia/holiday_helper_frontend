@@ -1,3 +1,4 @@
+//below as per documentation
 import React from 'react';
 import {
   Chart as ChartJS,
@@ -9,7 +10,9 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+//choosing type of chart
 import { Line } from 'react-chartjs-2';
+//this is a dev dependency to provide fake data to see if chart displaying
 import { faker } from '@faker-js/faker';
 
 
