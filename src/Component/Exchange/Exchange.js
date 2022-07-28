@@ -65,7 +65,7 @@ function Exchange() {
          
       const x = data2.rates
       const arr = Object.keys(x).map(function(key, index) {
-        return x;
+        return key;
       })
 
       console.log(arr)
