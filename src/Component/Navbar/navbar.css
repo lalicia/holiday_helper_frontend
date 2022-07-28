@@ -1,7 +1,17 @@
+
+.main-menu{
+    width: 100%;
+    display:block;
+    flex-direction: row;
+    z-index: 1;
+    margin: 0 auto;
+    text-decoration: none;
+
 .header {
   background: #094074;
   display: flex;
   height: 70px;
+
 }
 
 .header-content {
