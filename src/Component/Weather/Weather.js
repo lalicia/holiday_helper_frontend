@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import WeatherCards from "../WeatherCards/WeatherCards";
-import "./Weather..css";
 
 function Weather() {
   const [icon, setIcon] = useState("10d");
