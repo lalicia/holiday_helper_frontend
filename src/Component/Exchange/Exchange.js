@@ -26,6 +26,7 @@ function Exchange() {
   const [rate, setRate] = useState("")
   const [result, setResult] = useState("")
   const [bottomAxis, setBottomAxis] = useState([])
+  const [sideAxis, setSideAxis] = useState([])
   
   //needed to send through API fetch, will not accept apikey without this
   const myHeaders = new Headers();
@@ -79,7 +80,22 @@ function Exchange() {
                         }
                     }
                 }
-         
+      
+      //this drills down into the returned data to get the array for the rates
+      const ratesArray = data2.rates;
+      
+      const ratesArray2 = Object.values(ratesArray);
+      
+        //const ratesArray3 = Object.values(ratesArray2); - we don't think we need this one
+      
+      const please = ratesArray2.map((item) => {
+        return item[to]
+      })
+
+      console.log(please);
+      setSideAxis(please)
+
+
       const x = data2.rates
 
       //this is the array for the bottom axis of the chart with the dynamic dates from the historical fetch
@@ -175,14 +191,14 @@ const formattedTime2 = `${year2}-${month2}-${day2}`;
     const labels = bottomAxis;
   
     //this is the fake array for rates which needs to be worked on
-    const arr = [1, 2, 3, 4]
+    //const arr = [1, 2, 3, 4]
     
     const data = {
       labels,
       datasets: [
         {
           label: 'Dataset 1',
-          data: arr,
+          data: sideAxis,
           borderColor: 'rgb(255, 99, 132)',
           backgroundColor: 'rgba(255, 99, 132, 0.5)',
         },
@@ -201,7 +217,7 @@ const formattedTime2 = `${year2}-${month2}-${day2}`;
         <label htmlFor="From">From</label>
         <input id="From" onChange={(e) => {setFrom(e.target.value)}}></input>
         <label htmlFor="To">To</label>
-        <input id="To" onChange={(e) => {setTo(e.target.value)}}></input>
+        <input id="To" onChange={(e) => {setTo(e.target.value.toUpperCase())}}></input>
         <label htmlFor="Rate">Rate</label>
         <input id="Rate" value={rate}></input>
       </div>
