@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './navbar.css';
+import './Navbar.css';
 import { Link } from "react-router-dom"
 // import Hamburger from 'hamburger-react'
 // import { Close, MenuOutlined } from '@material-ui/icons'
