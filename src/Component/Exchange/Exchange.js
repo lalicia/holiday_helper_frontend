@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Chart, data} from "./Chart"
+//import {Chart, data} from "./Chart" - component moved into here
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,7 +13,8 @@ import {
 //choosing type of chart
 import { Line } from 'react-chartjs-2';
 //this is a dev dependency to provide fake data to see if chart displaying
-import { faker } from '@faker-js/faker';
+//import { faker } from '@faker-js/faker'; - no longer using
+
 
 function Exchange() {
 
@@ -44,6 +45,7 @@ function Exchange() {
       // let data = await response.json()
       // let data2 = await response2.json()
   
+      //fake data to use to not have to request from API
       let data2 = {
                     "success": true,
                     "timeseries": true,
@@ -79,20 +81,20 @@ function Exchange() {
                 }
          
       const x = data2.rates
-      const y = Object.keys(x)
 
+      //this is the array for the bottom axis of the chart with the dynamic dates from the historical fetch
+      const y = Object.keys(x)
       setBottomAxis(y)
 
-      console.log(bottomAxis)
+      //console.log(bottomAxis)
 
       // const arr = x.map((item) => {
       //   return item
       // })
       
-
       // console.log(arr)
 
-      console.log(x["2022-07-20"][to])
+      //console.log(x["2022-07-20"][to])
 
     }
     getRates()
@@ -103,9 +105,7 @@ function Exchange() {
 const yesterday = Date.now() - 86400000;
 //gets the date 8 days previous (using same method of subtracting from the UNIX timestamp)
 const eightDays = Date.now() - 691200000;
-
 // console.log(yesterday)
-
 
 let unix_timestamp = yesterday
 
@@ -145,7 +145,7 @@ const formattedTime2 = `${year2}-${month2}-${day2}`;
 
   console.log()
 
-
+  //this is the start of the chart
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -171,8 +171,10 @@ const formattedTime2 = `${year2}-${month2}-${day2}`;
       },
     };
     
+    //this sets the labels on the bottom axis
     const labels = bottomAxis;
   
+    //this is the fake array for rates which needs to be worked on
     const arr = [1, 2, 3, 4]
     
     const data = {
@@ -184,16 +186,8 @@ const formattedTime2 = `${year2}-${month2}-${day2}`;
           borderColor: 'rgb(255, 99, 132)',
           backgroundColor: 'rgba(255, 99, 132, 0.5)',
         },
-        // {
-        //   label: 'Dataset 2',
-        //   data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-        //   borderColor: 'rgb(53, 162, 235)',
-        //   backgroundColor: 'rgba(53, 162, 235, 0.5)',
-        // },
       ],
     };
-
-
 
 
   return (
