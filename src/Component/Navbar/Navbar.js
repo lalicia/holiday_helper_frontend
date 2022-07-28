@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import Logo from '../../Assets/Logo/HHLOGO.png'
 
 function Menu({ show }) {
   const classMenu = `menu ${show ? "menu-show" : "menu-hide"}`;
   const classLink = `menu-link ${show ? "menu-link-show" : "menu-link-hide"}`;
 
   return (
+
     <nav className={classMenu}>
       <ul>
         <li>
@@ -46,7 +48,11 @@ function Navbar() {
   return (
     <div className="header">
       <div className="header-content">
-        <div>logo</div>
+        <div className="logo">
+          <img className="logo-image"
+            src={Logo} alt="Logo"
+          />
+        </div>
         <div>
           <Icon
             className="menu-icon"
