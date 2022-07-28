@@ -23,16 +23,74 @@ function Exchange() {
 
   useEffect(() => {
     async function getRates() {
-      const response = await fetch(url, requestOptions)
-      const response2 = await fetch(historical, requestOptions)
+      // const response = await fetch(url, requestOptions)
+      // const response2 = await fetch(historical, requestOptions)
 
-      let data = await response.json()
-      let data2 = await response2.json()
+      // let data = await response.json()
+      // let data2 = await response2.json()
   
-      // console.log(data)
-      console.log(data2.rates)
-      setResult(data.result)
-      setRate(data.info.rate)
+      let data2 = {
+                    "success": true,
+                    "timeseries": true,
+                    "start_date": "2022-07-20",
+                    "end_date": "2022-07-27",
+                    "base": "USD",
+                    "rates": {
+                        "2022-07-20": {
+                            "GBP": 0.83535
+                        },
+                        "2022-07-21": {
+                            "GBP": 0.83365
+                        },
+                        "2022-07-22": {
+                            "GBP": 0.833021
+                        },
+                        "2022-07-23": {
+                            "GBP": 0.833021
+                        },
+                        "2022-07-24": {
+                            "GBP": 0.834304
+                        },
+                        "2022-07-25": {
+                            "GBP": 0.82957
+                        },
+                        "2022-07-26": {
+                            "GBP": 0.830825
+                        },
+                        "2022-07-27": {
+                            "GBP": 0.822205
+                        }
+                    }
+                }
+         
+      const x = data2.rates
+      const arr = Object.keys(x).map(function(key, index) {
+        return x;
+      })
+
+      console.log(arr)
+      
+      // console.log(Object.keys(x))
+
+      console.log(x["2022-07-20"][to])
+
+      // const arr = []
+
+       
+
+      //  for (var key in data2) {
+      //      if (data2.hasOwnProperty(key)) {
+      //          arr.push(data2[key]);
+      //      }
+      //  }
+       
+      //  console.log(arr);
+      //  console.log(arr[5]);
+
+
+      // console.log(data2.rates["2022-07-20"])
+      // setResult(data.result)
+      // setRate(data.info.rate)
     }
     getRates()
   }, [url])
