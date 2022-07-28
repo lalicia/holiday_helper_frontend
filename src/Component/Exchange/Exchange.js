@@ -1,5 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import {Chart, data} from "./Chart"
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+//choosing type of chart
+import { Line } from 'react-chartjs-2';
+//this is a dev dependency to provide fake data to see if chart displaying
+import { faker } from '@faker-js/faker';
 
 function Exchange() {
 
@@ -10,6 +24,7 @@ function Exchange() {
   const [amount, setAmount] = useState("")
   const [rate, setRate] = useState("")
   const [result, setResult] = useState("")
+  const [bottomAxis, setBottomAxis] = useState([])
   
   //needed to send through API fetch, will not accept apikey without this
   const myHeaders = new Headers();
@@ -64,33 +79,21 @@ function Exchange() {
                 }
          
       const x = data2.rates
-      const arr = Object.keys(x).map(function(key, index) {
-        return key;
-      })
+      const y = Object.keys(x)
 
-      console.log(arr)
+      setBottomAxis(y)
+
+      console.log(bottomAxis)
+
+      // const arr = x.map((item) => {
+      //   return item
+      // })
       
-      // console.log(Object.keys(x))
+
+      // console.log(arr)
 
       console.log(x["2022-07-20"][to])
 
-      // const arr = []
-
-       
-
-      //  for (var key in data2) {
-      //      if (data2.hasOwnProperty(key)) {
-      //          arr.push(data2[key]);
-      //      }
-      //  }
-       
-      //  console.log(arr);
-      //  console.log(arr[5]);
-
-
-      // console.log(data2.rates["2022-07-20"])
-      // setResult(data.result)
-      // setRate(data.info.rate)
     }
     getRates()
   }, [url])
@@ -142,6 +145,57 @@ const formattedTime2 = `${year2}-${month2}-${day2}`;
 
   console.log()
 
+
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  );
+  
+  const top = 'top'
+  
+  const options = {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: top,
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Line Chart',
+        },
+      },
+    };
+    
+    const labels = bottomAxis;
+  
+    const arr = [1, 2, 3, 4]
+    
+    const data = {
+      labels,
+      datasets: [
+        {
+          label: 'Dataset 1',
+          data: arr,
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        },
+        // {
+        //   label: 'Dataset 2',
+        //   data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+        //   borderColor: 'rgb(53, 162, 235)',
+        //   backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        // },
+      ],
+    };
+
+
+
+
   return (
     <>
       <h2>Exchange Rate Checker</h2>
@@ -160,7 +214,7 @@ const formattedTime2 = `${year2}-${month2}-${day2}`;
       <h3>{result}</h3>
       <button onClick={handleClick}>Get Rate</button>
       <h4>The last 7 days trend</h4>
-      <Chart/>
+      <Line options={options} data={data} />;
     </>
   )
 }
