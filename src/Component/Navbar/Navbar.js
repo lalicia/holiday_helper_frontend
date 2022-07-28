@@ -1,47 +1,64 @@
-import React, {useState} from 'react'
-import './Navbar.css';
-import { Link } from "react-router-dom"
-import { Icon } from '@iconify/react';
+import React, { useState } from "react";
+import "./Navbar.css";
+import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react";
 
+function Menu({ show }) {
+  const classMenu = `menu ${show ? "menu-show" : "menu-hide"}`;
+  const classLink = `menu-link ${show ? "menu-link-show" : "menu-link-hide"}`;
 
-function Navbar() {
-  const [active, setActive] = useState(false)
-  const DisplayMenu = () => {
-    setActive(!active)
-  }
   return (
-    <div className='header' >
-      <div className='headerlogo'> logo</div>
-       
-        <div className='menu'>
-          <nav className={active ? 'navbar active':'Navbar' }>
-          <ul >
-            <div className='closed'>
-              <Icon icon="mdi:window-close" className='close' onClick={DisplayMenu} />
-            </div>
-              <li>
-                <Link to='/'>Home</Link>
-              </li>
-              <li>
-                <Link to='/packing-list'>Packing List</Link>
-              </li>
-              <li>
-                <Link to='/weather'>Weather Forecast</Link>
-              </li>
-              <li>
-                <Link to='/exchange'>Exchange Rates</Link>
-              </li>
-              <li>
-                <Link to='/contacts'>Emergency Contacts</Link>
-              </li>
-            </ul>
-        </nav>
-        <div className='hamburger-icon'>
-          <Icon icon="charm:menu-hamburger" className='hamburger-menu'onClick={DisplayMenu} />
-        </div>
-       </div>
-    </div>
-  )
+    <nav className={classMenu}>
+      <ul>
+        <li>
+          <Link className={classLink} to="/">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link className={classLink} to="/packing-list">
+            Packing List
+          </Link>
+        </li>
+        <li>
+          <Link className={classLink} to="/weather">
+            Weather Forecast
+          </Link>
+        </li>
+        <li>
+          <Link className={classLink} to="/exchange">
+            Exchange Rates
+          </Link>
+        </li>
+        <li>
+          <Link className={classLink} to="/contacts">
+            Emergency Contacts
+          </Link>
+        </li>
+      </ul>
+    </nav>
+  );
 }
 
-export default Navbar
+function Navbar() {
+  const [showMenu, setShowMenu] = useState(false);
+  const onDisplayMenu = () => setShowMenu(!showMenu);
+  return (
+    <div className="header">
+      <div className="header-content">
+        <div>logo</div>
+        <div>
+          <Icon
+            className="menu-icon"
+            height={50}
+            icon={showMenu ? "akar-icons:cross" : "charm:menu-hamburger"}
+            onClick={onDisplayMenu}
+          />
+        </div>
+      </div>
+      <Menu show={showMenu} />
+    </div>
+  );
+}
+
+export default Navbar;
