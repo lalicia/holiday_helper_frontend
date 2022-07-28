@@ -1,4 +1,11 @@
 .HomeBanner {
+    margin: auto;
     background-color: #094074;
-    color: #FFFFFF
+    color: #FFFFFF;
+    text-align: center;
+    width: 75%;
+    height: 50px;
+    padding-top: 5px;
+    margin-top: 30px;
+    
 }
