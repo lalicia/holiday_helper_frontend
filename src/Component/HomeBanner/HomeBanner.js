@@ -1,10 +1,13 @@
 import React from "react";
 import "./HomeBanner.css";
+import Banner from'../../Assets/images/Banner1.png'
 
 function HomeBanner() {
   return (
     <div className="HomeBanner">
-      <p>Free Coffee For Life!!</p>
+      <img className="Banner"
+            src={Banner} alt="Banner Image"
+          />
     </div>
   );
 }
