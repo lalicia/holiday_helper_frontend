@@ -12,8 +12,6 @@ import {
 } from 'chart.js';
 //choosing type of chart
 import { Line } from 'react-chartjs-2';
-//this is a dev dependency to provide fake data to see if chart displaying
-//import { faker } from '@faker-js/faker'; - no longer using
 
 
 function Exchange() {
@@ -45,9 +43,6 @@ function Exchange() {
 
       let data = await response.json()
       let data2 = await response2.json()
-
-
-      console.log(data)
 
   
       setResult(data.result)
@@ -98,25 +93,14 @@ function Exchange() {
         return item[to]
       })
 
-      console.log(please);
       setSideAxis(please)
 
 
-      const x = data2.rates
+      const xAxis = data2.rates
 
       //this is the array for the bottom axis of the chart with the dynamic dates from the historical fetch
-      const y = Object.keys(x)
-      setBottomAxis(y)
-
-      //console.log(bottomAxis)
-
-      // const arr = x.map((item) => {
-      //   return item
-      // })
-      
-      // console.log(arr)
-
-      //console.log(x["2022-07-20"][to])
+      const yAxis = Object.keys(xAxis)
+      setBottomAxis(yAxis)
 
     }
     getRates()
@@ -127,7 +111,7 @@ function Exchange() {
 const yesterday = Date.now() - 86400000;
 //gets the date 8 days previous (using same method of subtracting from the UNIX timestamp)
 const eightDays = Date.now() - 691200000;
-// console.log(yesterday)
+
 
 let unix_timestamp = yesterday
 
@@ -143,7 +127,6 @@ const day = ('0' + date.getDate()).slice(-2);
 
 const formattedTime = `${year}-${month}-${day}`;
 
-// console.log(formattedTime)
 
 //code repeated to get the second date required for API fetch for historical rates
 let unix_timestamp2 = eightDays
@@ -154,12 +137,11 @@ const year2 = date2.getFullYear();
 const month2 = (('0' + (date2.getMonth()+1)).slice(-2));
 const day2 = ('0' + date2.getDate()).slice(-2);
 
+//date needs to be in specific format for API fetch
 const formattedTime2 = `${year2}-${month2}-${day2}`;
 
-// console.log(formattedTime2)
 
-
-
+  //first fetch for currency conversion, second fetch for timeseries to create chart
   function handleClick() {
     setUrl(`https://api.apilayer.com/fixer/convert?to=${to}&from=${from}&amount=${amount}`)
     setHistorical(`https://api.apilayer.com/fixer/timeseries?start_date=${formattedTime2}&end_date=${formattedTime}&base=${from}&symbols=${to}`)
@@ -188,7 +170,7 @@ const formattedTime2 = `${year2}-${month2}-${day2}`;
         },
         title: {
           display: true,
-          text: 'Chart.js Line Chart',
+          // text: 'Chart.js Line Chart',
         },
       },
     };
@@ -198,12 +180,11 @@ const formattedTime2 = `${year2}-${month2}-${day2}`;
   
     //this is the fake array for rates which needs to be worked on
     //const arr = [1, 2, 3, 4]
-    
     const data = {
       labels,
       datasets: [
         {
-          label: 'Dataset 1',
+          label: `${from.toUpperCase()} to ${to}`,
           data: sideAxis,
           borderColor: 'rgb(255, 99, 132)',
           backgroundColor: 'rgba(255, 99, 132, 0.5)',
@@ -227,10 +208,10 @@ const formattedTime2 = `${year2}-${month2}-${day2}`;
         <label htmlFor="Rate">Rate</label>
         <input id="Rate" value={rate}></input>
       </div>
-      <h3>{result}</h3>
+      <h3>{Number(result).toFixed(2)}</h3>
       <button onClick={handleClick}>Get Rate</button>
       <h4>The last 7 days trend</h4>
-      <Line options={options} data={data} />;
+      <Line options={options} data={data} />
     </>
   )
 }
