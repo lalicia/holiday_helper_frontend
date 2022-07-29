@@ -4,10 +4,10 @@ import "./HomeButtons.css";
 
 function HomeButtons({ iconName, title }) {
   return (
-    <>
+    <div className="main-homebutton">
       <Icon className="Icon" icon={iconName} />
-      <p>{title}</p>
-    </>
+      <p className="button-title">{title}</p>
+    </div>
   );
 }
 
