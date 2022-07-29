@@ -1,5 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import {Chart, data} from "./Chart"
+//import {Chart, data} from "./Chart" - component moved into here
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+//choosing type of chart
+import { Line } from 'react-chartjs-2';
+
 
 function Exchange() {
 
@@ -10,10 +23,12 @@ function Exchange() {
   const [amount, setAmount] = useState("")
   const [rate, setRate] = useState("")
   const [result, setResult] = useState("")
+  const [bottomAxis, setBottomAxis] = useState([])
+  const [sideAxis, setSideAxis] = useState([])
   
   //needed to send through API fetch, will not accept apikey without this
   const myHeaders = new Headers();
-  myHeaders.append("apikey", "YvAG8rpVVJsK2lU4u4TQ4XsG2pZJFxJu");
+  myHeaders.append("apikey", "o62KHCs9aHwr3OhHAVnkz6ldvYGc4edD");
   
   const requestOptions = {
     method: 'GET',
@@ -28,11 +43,65 @@ function Exchange() {
 
       let data = await response.json()
       let data2 = await response2.json()
+
   
-      // console.log(data)
-      console.log(data2.rates)
       setResult(data.result)
       setRate(data.info.rate)
+      //fake data to use to not have to request from API
+      // let data2 = {
+      //               "success": true,
+      //               "timeseries": true,
+      //               "start_date": "2022-07-20",
+      //               "end_date": "2022-07-27",
+      //               "base": "USD",
+      //               "rates": {
+      //                   "2022-07-20": {
+      //                       "GBP": 0.83535
+      //                   },
+      //                   "2022-07-21": {
+      //                       "GBP": 0.83365
+      //                   },
+      //                   "2022-07-22": {
+      //                       "GBP": 0.833021
+      //                   },
+      //                   "2022-07-23": {
+      //                       "GBP": 0.833021
+      //                   },
+      //                   "2022-07-24": {
+      //                       "GBP": 0.834304
+      //                   },
+      //                   "2022-07-25": {
+      //                       "GBP": 0.82957
+      //                   },
+      //                   "2022-07-26": {
+      //                       "GBP": 0.830825
+      //                   },
+      //                   "2022-07-27": {
+      //                       "GBP": 0.822205
+      //                   }
+      //               }
+      //           }
+      
+      //this drills down into the returned data to get the array for the rates
+      const ratesArray = data2.rates;
+      
+      const ratesArray2 = Object.values(ratesArray);
+      
+        //const ratesArray3 = Object.values(ratesArray2); - we don't think we need this one
+      
+      const please = ratesArray2.map((item) => {
+        return item[to]
+      })
+
+      setSideAxis(please)
+
+
+      const xAxis = data2.rates
+
+      //this is the array for the bottom axis of the chart with the dynamic dates from the historical fetch
+      const yAxis = Object.keys(xAxis)
+      setBottomAxis(yAxis)
+
     }
     getRates()
   }, [url])
@@ -42,8 +111,6 @@ function Exchange() {
 const yesterday = Date.now() - 86400000;
 //gets the date 8 days previous (using same method of subtracting from the UNIX timestamp)
 const eightDays = Date.now() - 691200000;
-
-// console.log(yesterday)
 
 
 let unix_timestamp = yesterday
@@ -60,7 +127,6 @@ const day = ('0' + date.getDate()).slice(-2);
 
 const formattedTime = `${year}-${month}-${day}`;
 
-// console.log(formattedTime)
 
 //code repeated to get the second date required for API fetch for historical rates
 let unix_timestamp2 = eightDays
@@ -71,18 +137,61 @@ const year2 = date2.getFullYear();
 const month2 = (('0' + (date2.getMonth()+1)).slice(-2));
 const day2 = ('0' + date2.getDate()).slice(-2);
 
+//date needs to be in specific format for API fetch
 const formattedTime2 = `${year2}-${month2}-${day2}`;
 
-// console.log(formattedTime2)
 
-
-
+  //first fetch for currency conversion, second fetch for timeseries to create chart
   function handleClick() {
     setUrl(`https://api.apilayer.com/fixer/convert?to=${to}&from=${from}&amount=${amount}`)
     setHistorical(`https://api.apilayer.com/fixer/timeseries?start_date=${formattedTime2}&end_date=${formattedTime}&base=${from}&symbols=${to}`)
   }
 
   console.log()
+
+  //this is the start of the chart
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  );
+  
+  const top = 'top'
+  
+  const options = {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: top,
+        },
+        title: {
+          display: true,
+          // text: 'Chart.js Line Chart',
+        },
+      },
+    };
+    
+    //this sets the labels on the bottom axis
+    const labels = bottomAxis;
+  
+    //this is the fake array for rates which needs to be worked on
+    //const arr = [1, 2, 3, 4]
+    const data = {
+      labels,
+      datasets: [
+        {
+          label: `${from.toUpperCase()} to ${to}`,
+          data: sideAxis,
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        },
+      ],
+    };
+
 
   return (
     <>
@@ -95,14 +204,14 @@ const formattedTime2 = `${year2}-${month2}-${day2}`;
         <label htmlFor="From">From</label>
         <input id="From" onChange={(e) => {setFrom(e.target.value)}}></input>
         <label htmlFor="To">To</label>
-        <input id="To" onChange={(e) => {setTo(e.target.value)}}></input>
+        <input id="To" onChange={(e) => {setTo(e.target.value.toUpperCase())}}></input>
         <label htmlFor="Rate">Rate</label>
         <input id="Rate" value={rate}></input>
       </div>
-      <h3>{result}</h3>
+      <h3>{Number(result).toFixed(2)}</h3>
       <button onClick={handleClick}>Get Rate</button>
       <h4>The last 7 days trend</h4>
-      <Chart/>
+      <Line options={options} data={data} />
     </>
   )
 }
