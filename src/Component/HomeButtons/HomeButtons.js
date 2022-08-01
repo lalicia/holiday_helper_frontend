@@ -1,13 +1,14 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import "./HomeButtons.css";
+import { Link } from "react-router-dom";
 
-function HomeButtons({ iconName, title }) {
+function HomeButtons({ iconName, title, path }) {
   return (
-    <div className="main-homebutton">
+    <Link to={path} className="main-homebutton">
       <Icon className="Icon" icon={iconName} />
       <p className="button-title">{title}</p>
-    </div>
+    </Link>
   );
 }
 
