@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 :root {
-  --dark-blue: #094074
-  --light-blue: #5ADBFF
-  --orange: #fe9000
-  --yellow: #ffdd4a
+  --dark-blue: #094074;
+  --light-blue: #5ADBFF;
+  --orange: #fe9000;
+  --yellow: #ffdd4a;
   --gradient: linear-gradient(180deg, #FFDD4A, #FE9000);
 }
 
