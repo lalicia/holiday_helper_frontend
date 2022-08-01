@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 //choosing type of chart
 import { Line } from 'react-chartjs-2';
+import './Exchange.css';
 
 
 function Exchange() {
@@ -194,25 +195,33 @@ const formattedTime2 = `${year2}-${month2}-${day2}`;
 
 
   return (
-    <>
-      <h2>Exchange Rate Checker</h2>
-      <div>
+    <div>
+      <h2 className="page-title">Exchange Rate Checker</h2>
+      <div className="amount-input">
         <label htmlFor="Amount">Amount</label>
-        <input id="Amount" onChange={(e) => {setAmount(e.target.value)}}></input>
+        <input className="input-box" id="Amount" onChange={(e) => {setAmount(e.target.value)}}></input>
       </div>
-      <div>
-        <label htmlFor="From">From</label>
-        <input id="From" onChange={(e) => {setFrom(e.target.value)}}></input>
-        <label htmlFor="To">To</label>
-        <input id="To" onChange={(e) => {setTo(e.target.value.toUpperCase())}}></input>
-        <label htmlFor="Rate">Rate</label>
-        <input id="Rate" value={rate}></input>
+      <div className="rates-flex">
+        <div className="rates-input">
+          <label htmlFor="From">From</label>
+          <input className="input-box" id="From" onChange={(e) => {setFrom(e.target.value)}}></input>
+        </div>
+        <div className="rates-input">
+          <label htmlFor="To">To</label>
+          <input className="input-box" id="To" onChange={(e) => {setTo(e.target.value.toUpperCase())}}></input>
+        </div>
+        <div className="rates-input">
+          <label htmlFor="Rate">Rate</label>
+          <input className="input-box" id="Rate" value={rate}></input>
+        </div>
       </div>
-      <h3>{Number(result).toFixed(2)}</h3>
-      <button onClick={handleClick}>Get Rate</button>
-      <h4>The last 7 days trend</h4>
+      <div className="get-rates">
+        <h3 className="text-result">{Number(result).toFixed(2)}</h3>
+        <button className="get-rate-button" onClick={handleClick}>Get Rate</button>
+      </div>
+      <h4 className="graph-title">The last 7 days trend</h4>
       <Line options={options} data={data} />
-    </>
+    </div>
   )
 }
 

@@ -1,7 +1,6 @@
 import React from "react";
 import HomeBanner from "../HomeBanner/HomeBanner";
 import HomeButtons from "../HomeButtons/HomeButtons";
-import temperature from '../../Assets/images/temperature-hot.png'
 import './Main.css'
 
 const suitcase = "ep:suitcase";

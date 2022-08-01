@@ -1,0 +1,63 @@
+.amount-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    color: #094074;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.input-box {
+    background-color: #5ADBFF;
+    border: none;
+    width: 100px;
+    border-radius: 10px;
+    margin-top: 5px;
+    height: 20px;
+    text-align: center;
+}
+
+.rates-flex {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.rates-input {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    text-align: center;
+    font-size: 14px;
+    color: #094074;
+}
+
+.get-rates {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.get-rate-button {
+    background-image: linear-gradient(180deg, #FFDD4A, #FE9000);
+    border-color: transparent;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color:#094074;
+    font-family: 'Comfortaa';
+    font-weight: 800;
+}
+
+.text-result {
+    font-size: 20px;
+    color: #094074;
+}
+
+.graph-title {
+    font-size: 16px;
+    margin-top: 90px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+    color: #094074;
+    font-weight: bold;
+  }
