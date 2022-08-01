@@ -450,8 +450,9 @@ function Weather() {
   }, [city]);
 
   return (
-    <div className="Weather">
-      <h3 className="weather-title"> Weather Forecast</h3>
+    <div>
+      <h3 className="page-title"> Weather Forecast</h3>
+      <div className="Weather">
       <div className="weather-searchbar-div">
         <input
           className="weather-input"
@@ -486,6 +487,7 @@ function Weather() {
         <DayComponent temp={temp} day="friday" />
         <DayComponent temp={temp} day="saturday" />
       </div>
+      </div>
       <div className="weather-cards-div">
         <div className="weather-cards-top">
           <WeatherCards
@@ -493,14 +495,14 @@ function Weather() {
             data={humidity[currentWeather.day.toLowerCase()]}
             unit="%"
           />
-          <WeatherCards
+          <WeatherCards title="Sunrise" data={sun.sunrise} unit="" />
+        </div>
+        <div className="weather-cards-bottom">
+        <WeatherCards
             title="Wind"
             data={wind[currentWeather.day.toLowerCase()]}
             unit="m/s"
           />
-        </div>
-        <div className="weather-cards-bottom">
-          <WeatherCards title="Sunrise" data={sun.sunrise} unit="" />
           <WeatherCards title="Sunset" data={sun.sunset} unit="" />
         </div>
       </div>
