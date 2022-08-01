@@ -38,7 +38,7 @@
   position: fixed;
   padding: 0 10px;
   width: 100%;
-  top: 69px;
+  top: 65px;
   transition: transform 0.5s;
   z-index: 0;
 }
@@ -46,10 +46,12 @@
 .menu-hide {
   transition-delay: 0.3s;
   transform: translateY(-100%);
+  position: absolute;
 }
 
 .menu-show {
   transform: translateY(0);
+  position: absolute;
 }
 
 .menu > ul {
