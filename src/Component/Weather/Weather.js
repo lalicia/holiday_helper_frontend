@@ -450,41 +450,51 @@ function Weather() {
   }, [city]);
 
   return (
-    <div className="Weather">
-      <h3 className="weather-title"> Weather Forecast</h3>
-      <div className="weather-searchbar-div">
-        <input
-          className="weather-input"
-          type="text"
-          value={inputField}
-          onChange={onChange}
-          placeholder="Search City..."
-        />
-        <span className="search-icon">
-          <Icon
-            icon="akar-icons:search"
-            inline={true}
-            onClick={onClickSearch}
+    <div>
+      <h3 className="page-title"> Weather Forecast</h3>
+      <div className="Weather">
+        <div className="weather-searchbar-div">
+          <input
+            className="weather-input"
+            type="text"
+            value={inputField}
+            onChange={onChange}
+            placeholder="Search City..."
           />
-        </span>
-      </div>
-      <img
-        className="weather-icon"
-        src={`https://openweathermap.org/img/wn/${currentWeather.icon}@2x.png`}
-        alt="Current Weather"
-      />
-      <p className="current-temp">{`${currentWeather.temp}\u00B0`}</p>
-      <h3 className="city-name">{`${city.charAt(0).toUpperCase()}${city.slice(
-        1
-      )}`}</h3>
-      <div className="weekly-forecast-div">
-        <DayComponent temp={temp} day="sunday" />
-        <DayComponent temp={temp} day="monday" />
-        <DayComponent temp={temp} day="tuesday" />
-        <DayComponent temp={temp} day="wednesday" />
-        <DayComponent temp={temp} day="thursday" />
-        <DayComponent temp={temp} day="friday" />
-        <DayComponent temp={temp} day="saturday" />
+
+          <span className="search-icon">
+            <Icon
+              icon="akar-icons:search"
+              inline={true}
+              onClick={onClickSearch}
+            />
+          </span>
+        </div>
+        </div>
+        <div className="weather-today">
+          <img
+            className="weather-icon"
+            src={`http://openweathermap.org/img/wn/${currentWeather.icon}@2x.png`}
+            alt="Current Weather"
+          />
+          <div className="city-temp">
+            <p className="current-temp">{`${currentWeather.temp}\u00B0`}</p>
+            <h3 className="city-name">{`${city
+              .charAt(0)
+              .toUpperCase()}${city.slice(1)}`}</h3>
+          </div>
+        </div>
+        <div className="Weather">
+        <div className="weekly-forecast-div">
+          <DayComponent temp={temp} day="sunday" />
+          <DayComponent temp={temp} day="monday" />
+          <DayComponent temp={temp} day="tuesday" />
+          <DayComponent temp={temp} day="wednesday" />
+          <DayComponent temp={temp} day="thursday" />
+          <DayComponent temp={temp} day="friday" />
+          <DayComponent temp={temp} day="saturday" />
+        </div>
+
       </div>
       <div className="weather-cards-div">
         <div className="weather-cards-top">
@@ -493,18 +503,18 @@ function Weather() {
             data={humidity[currentWeather.day.toLowerCase()]}
             unit="%"
           />
+          <WeatherCards title="Sunrise" data={sun.sunrise} unit="" />
+        </div>
+        <div className="weather-cards-bottom">
           <WeatherCards
             title="Wind"
             data={wind[currentWeather.day.toLowerCase()]}
             unit="m/s"
           />
-        </div>
-        <div className="weather-cards-bottom">
-          <WeatherCards title="Sunrise" data={sun.sunrise} unit="" />
           <WeatherCards title="Sunset" data={sun.sunset} unit="" />
         </div>
+        </div>
       </div>
-    </div>
   );
 }
 
