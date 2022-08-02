@@ -18,14 +18,14 @@ export function AddTodo({ addTodo }) {
 
   return (
     <div className="add-todo">
-      <input
+      <input className="add-text"
         type="text"
         placeholder="I need to pack..."
         value={todoTitle}
         onChange={onChange}
       />
       <button className="add-todo-add" onClick={onClickAdd}>
-        Add
+        Add Item
       </button>
     </div>
   );

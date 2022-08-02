@@ -9,7 +9,7 @@ export function TodoTitle(props) {
 
   return (
     <div className="todo-title">
-      <span>{isComplete ? `✔️` : `❌`}</span>
+      <span className="tick-cross">{isComplete ? `✔️` : `❌`}</span>
       {isEditing ? (
         <input
           className="edit-todo-input"
@@ -18,7 +18,7 @@ export function TodoTitle(props) {
           onChange={onTodoTitleChange}
         />
       ) : (
-        <div className={`${isComplete && "todo-done"}`}>{title}</div>
+        <span className={`${isComplete && "todo-done"}`}>{title}</span>
       )}
     </div>
   );
