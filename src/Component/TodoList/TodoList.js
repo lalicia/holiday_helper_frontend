@@ -2,6 +2,7 @@ import { useState } from "react";
 import { nanoid } from "nanoid";
 import { Todo } from "./Todo/Todo";
 import { AddTodo } from "./AddTodo";
+import "./Todo.css"
 
 const initialTodos = [
   { id: nanoid(), title: "Toothbrush", done: false },
@@ -41,7 +42,7 @@ function TodoList() {
 
   return (
     <div className="todo-list">
-      <h2>Packing List</h2>
+      <h2 className="title">Packing List</h2>
       {todos.map((todo) => (
         <Todo
           key={todo.id}

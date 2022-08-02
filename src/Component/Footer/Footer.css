@@ -6,12 +6,10 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    position: fixed;
     width: 100%;
+    margin-top: 10px;
     left: 0;
     bottom: 0;
-    background-color: #094074;
+    background-color: var(--dark-blue);
     color: white;
-   
-
 }

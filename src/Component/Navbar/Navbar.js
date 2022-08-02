@@ -71,9 +71,9 @@ function Navbar() {
           showMenu ? "header-content-no-shadow" : "header-content-shadow"
         }`}
       >
-        <div className="logo">
+        <Link to="/" className="logo">
           <img className="logo-image" src={Logo} alt="Logo" />
-        </div>
+        </Link>
         <div>
           <NavbarIcon
             className="menu-icon"

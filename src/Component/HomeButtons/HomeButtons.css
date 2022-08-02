@@ -14,10 +14,12 @@
     font-size: 14px;
     font-weight: 700;
     color: #094074;
-    
 }
 
-.main-homebutton{
+.main-homebutton {
+    text-decoration: none;
     text-align: center;
+  }
 
-}
+
+

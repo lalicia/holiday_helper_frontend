@@ -8,28 +8,37 @@
 
 .weather-cards-div {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-around;
 }
 
 .weather-cards-top {
     display: flex;
-    flex-direction: row;
+    flex-direction:column;
     margin: 10px;
     width: 100%;
-    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 50px;
 }
 
 .weather-cards-bottom {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: 10px;
     width: 100%;
-    justify-content: space-evenly;
+    align-items: center;
+    margin-right: 50px;
+    
 }
 
 .weather-card {
-    padding: 10px;
+    background-image: linear-gradient(180deg, #FFDD4A, #FE9000);
+    height: 90px;
+    width: 100px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    color: #094074;
+    box-shadow: 5px 10px 10px #bcb8b8;
 }
 
 .weekly-forecast-div {
@@ -37,9 +46,12 @@
     justify-content: center ;
     align-items: center;
     background-image: var(--gradient);
-    /* padding: 0.5rem 1rem; */
+    padding: 0px 5px;
     border-radius: 10px;
     max-width: 90vw;
+    margin-bottom: 10px;
+    box-shadow: 5px 10px 10px #bcb8b8;
+    margin-bottom: 40px;
 }
 
 .weekly-forecast-div * {
@@ -68,14 +80,8 @@
     font-weight: 500;
 }
 
-
-.weather-title {
-    margin: 1.5rem;
-    margin-right: 10rem;
-}
-
 .weather-icon {
-    width: 250px;
+    width: 150px;
     height: auto;
     margin: -30px 0px;
     z-index: -1;
@@ -88,6 +94,8 @@
     border: none;
     border-radius: 20px;
     padding: 5px;
+    box-shadow: 5px 10px 10px #bcb8b8;
+    margin-top: 20px;
 }
 
 .weather-input {
@@ -98,12 +106,14 @@
 }
 
 .weather-input::placeholder {
-    color: black;
+    color: #094074;
     opacity: 1;
+    font-family: Comfortaa;
 }
 
 .search-icon {
     margin-right: 10px;
+    color: #094074;
 }
 
 .iconify--akar-icons {
@@ -117,7 +127,25 @@
     font-size: 3rem;
     font-weight: 900;
     margin-bottom: 0;
+    color: #094074;
 }
 
+.city-name {
+    color: #094074;
+}
 
+.city-temp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 25px;
+}
+
+.weather-today {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
 

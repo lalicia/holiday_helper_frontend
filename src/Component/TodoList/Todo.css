@@ -1,0 +1,61 @@
+.todo {
+display: flex;
+flex-direction: row;
+margin: 10px;
+align-items: baseline;
+}
+
+.todo-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.todo-title {
+margin: 5px;
+color:var(--dark-blue)
+}
+
+.tick-cross {
+    margin: 5px;
+}
+
+.add-todo {
+   margin:30px;
+}
+
+.title {
+    margin: 30px;
+}
+
+.add-todo-add{
+    color:var(--dark-blue);
+    font-family: 'Comfortaa';
+    font-size: 16px;
+    border-radius: 5px;
+    background-image: linear-gradient(to right,  #FFDD4A 51%, #FE9000 100%)
+}
+
+
+.toggle-button{
+margin: 2.5px;
+font-family: 'Comfortaa';
+
+}
+
+.edit-button{
+    margin: 2.5px;
+    font-family: 'Comfortaa';
+    
+}
+
+.delete-button{
+    margin: 2.5px;
+    font-family: 'Comfortaa';
+    
+}
+
+.add-text{
+    font: var(--dark-blue);
+    outline: none;
+}
