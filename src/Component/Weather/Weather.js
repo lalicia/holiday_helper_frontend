@@ -242,49 +242,26 @@ function Weather() {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=1a1a53ffdffb4a6940e1c179d178a70a`
-      );
-      const data = await res.json();
+      // const res = await fetch(
+      //   `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=1a1a53ffdffb4a6940e1c179d178a70a`
+      // );
+      // const data = await res.json();
 
       // converts date from API to corresponding day of the week
-      // const listWithDay = mockData.list.map((object) => {
-      //   const date = new Date(`${object.dt_txt}`);
-      //   const day = days[`${date.getDay()}`];
-      //   return { ...object, day: day };
-      // });
-
-      // const convertSunriseSunset = {
-      //   sunrise: unixToHoursMins(mockData.city.sunrise),
-      //   sunset: unixToHoursMins(mockData.city.sunset),
-      // };
-
-      // gives data in the format for our use case
-      // const formattedData = {
-      //   ...mockData,
-      //   list: listWithDay,
-      //   city: {
-      //     sunrise: convertSunriseSunset.sunrise,
-      //     sunset: convertSunriseSunset.sunset,
-      //   },
-      // };
-      // console.log("%c Formatted Data:", "color: red", formattedData);
-
-      // converts date from API to corresponding day of the week
-      const listWithDay = data.list.map((object) => {
+      const listWithDay = mockData.list.map((object) => {
         const date = new Date(`${object.dt_txt}`);
         const day = days[`${date.getDay()}`];
         return { ...object, day: day };
       });
 
       const convertSunriseSunset = {
-        sunrise: unixToHoursMins(data.city.sunrise),
-        sunset: unixToHoursMins(data.city.sunset),
+        sunrise: unixToHoursMins(mockData.city.sunrise),
+        sunset: unixToHoursMins(mockData.city.sunset),
       };
 
       // gives data in the format for our use case
       const formattedData = {
-        ...data,
+        ...mockData,
         list: listWithDay,
         city: {
           sunrise: convertSunriseSunset.sunrise,
@@ -292,6 +269,29 @@ function Weather() {
         },
       };
       console.log("%c Formatted Data:", "color: red", formattedData);
+
+      // converts date from API to corresponding day of the week
+      // const listWithDay = data.list.map((object) => {
+      //   const date = new Date(`${object.dt_txt}`);
+      //   const day = days[`${date.getDay()}`];
+      //   return { ...object, day: day };
+      // });
+
+      // const convertSunriseSunset = {
+      //   sunrise: unixToHoursMins(data.city.sunrise),
+      //   sunset: unixToHoursMins(data.city.sunset),
+      // };
+
+      // gives data in the format for our use case
+      // const formattedData = {
+      //   ...data,
+      //   list: listWithDay,
+      //   city: {
+      //     sunrise: convertSunriseSunset.sunrise,
+      //     sunset: convertSunriseSunset.sunset,
+      //   },
+      // };
+      // console.log("%c Formatted Data:", "color: red", formattedData);
 
       const dailyData = filterDataByDay(formattedData.list);
       console.log("daily: ", dailyData);
@@ -461,6 +461,7 @@ function Weather() {
             onChange={onChange}
             placeholder="Search City..."
           />
+
           <span className="search-icon">
             <Icon
               icon="akar-icons:search"
@@ -493,6 +494,7 @@ function Weather() {
           <DayComponent temp={temp} day="friday" />
           <DayComponent temp={temp} day="saturday" />
         </div>
+
       </div>
       <div className="weather-cards-div">
         <div className="weather-cards-top">
