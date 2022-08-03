@@ -7,10 +7,13 @@
   text-decoration: none;
 }
 
+/* "position: fixed" stops it from scrolling and width 100% fixes the size again */
 .header {
   background: #094074;
   display: flex;
   height: 70px;
+  position: fixed;
+  width: 100%;
 }
 
 .header-content {
@@ -32,11 +35,11 @@
   transition-delay: 0.7s;
 }
 
+/* removed padding as it was adding extra width to the page and making everything look off */
 .menu {
   background: #094074;
   color: white;
   position: fixed;
-  padding: 0 10px;
   width: 100%;
   top: 65px;
   transition: transform 0.5s;

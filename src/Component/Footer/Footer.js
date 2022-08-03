@@ -1,15 +1,14 @@
-import React from 'react';
-import './Footer.css';
+import React from "react";
+import "./Footer.css";
 
+/* removed extra unnecessary empty div from around footer */
 function Footer() {
   return (
-      <div>
-          <div className='footer'>
-              <span>Contacts Us</span>
-              <span>Holiday Helper©</span>
-          </div>
-     </div>
-  )
-};
+    <div className="footer">
+      <span>Contacts Us</span>
+      <span>Holiday Helper©</span>
+    </div>
+  );
+}
 
-export default Footer
+export default Footer;
