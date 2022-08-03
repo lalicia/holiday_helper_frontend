@@ -9,7 +9,7 @@ export function TodoTitle(props) {
 
   return (
     <div className="todo-title">
-      <span className="tick-cross">{isComplete ? `✔️` : `❌`}</span>
+      <span className="tick-cross">{isComplete ? `✔️` : `⭕`}</span>
       {isEditing ? (
         <input
           className="edit-todo-input"
