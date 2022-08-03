@@ -57,13 +57,13 @@ export const DummyData = {
     },
         
         
-        'United Kingdom': {
-        police: 999,
-        ambulance: 999,
-        fire: 999,
-        embassy: "+33 (0)1 44 51 31 00",
+        // 'United Kingdom': {
+        // police: 999,
+        // ambulance: 999,
+        // fire: 999,
+        // embassy: "+33 (0)1 44 51 31 00",
            
-    },
+    // },
         
         Italy: {
         police: 113,

@@ -1,30 +1,35 @@
+// import { DummyData } from "../DummyData";
 
-import { DummyData } from "../DummyData";
 
+function Countries({ country, emergencyData }) {
 
-function Countries({ country }) {
-    if (DummyData[country]) {
+const filteredData = emergencyData.payload.filter((obj) => {
+  return obj.country === country
+})
+const countryObj = filteredData[0]
+
+if (countryObj) {
         return (
             <>
             <strong>{country}</strong>
                 {/* use ternary oprator instead of nullishcoalescing operator (??) becouse browser support is better */}
                 
-                <p>{`fire: ${DummyData[country].fire ? DummyData[country].fire : "---"}`}</p>
+                <p>{`fire: ${countryObj.fire ? countryObj.fire : "---"}`}</p>
                 
 
-                <p>{`police: ${DummyData[country].police ? DummyData[country].police : "---"}`}</p>
+                <p>{`police: ${countryObj.police ? countryObj.police : "---"}`}</p>
 
-                <p>{`ambulance: ${DummyData[country].ambulance ? DummyData[country].ambulance : "---"}`}</p>
+                <p>{`ambulance: ${countryObj.ambulance ? countryObj.ambulance : "---"}`}</p>
 
-                <p>{`embassy: ${DummyData[country].embassy? DummyData[country].embassy : "---"}`}</p>
+                <p>{`embassy: ${countryObj.embassy? countryObj.embassy : "---"}`}</p>
               </>)
   }
     else {
         return (
         <p> Data not found... </p>
-    );
+     );
   }
-    
+   
 
 };
 

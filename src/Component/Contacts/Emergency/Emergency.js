@@ -6,22 +6,20 @@ import { DummyData } from "../DummyData";
 
 export default function Emergency() {
   const [country, setCountry] = useState("Select country");
+  const [emergencyData, setEmergencyData] = useState()
 
-//   const [germanyContentVisible, setGermanyContentVisible] = useState(false);
-//   const [unitedKingdomContentVisible, setUnitedKingdomContentVisible] = useState(false);
-//   const [italyContentVisible, setItalyContentVisible] = useState(false);
+  useEffect(() => {
+    async function getEmergencyData() {
+      const response = await fetch("http://localhost:3001/emergency");
 
-//   useEffect(() => {
-//     country === "Germany"
-//       ? setGermanyContentVisible(true)
-//       : setGermanyContentVisible(false);
-//       country === "United Kingdom"
-//           ? setUnitedKingdomContentVisible(true)
-//           : setUnitedKingdomContentVisible(false);
-//       country === "Italy"
-//           ? setItalyContentVisible(true)
-//           : setItalyContentVisible(false);
-//   }, [country]);
+      let data = await response.json();
+      setEmergencyData(data);
+
+  }
+  getEmergencyData();
+}, []);
+
+console.log(emergencyData)
 
   const handleOnChange = (e) => {
       setCountry(e.target.value);
@@ -32,29 +30,33 @@ export default function Emergency() {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
-  const renderResult = () => {
-    let result;
-    country === "select country"
-      ? (result = "select country")
-      : (result = makeFirstLetterCapital(country));
-    return result;
-  };
-
+  // const renderResult = () => {
+  //   let result;
+  //   country === "select country"
+  //     ? (result = "select country")
+  //     : (result = makeFirstLetterCapital(country));
+  //   return result;
+  // };
+  if (emergencyData){
   return (
     <div className="container mt-3">
       <div>
-        <h1>Hello {renderResult()}</h1>
+        <h1>{`${country == "Select country" ? "Select Country" : country}`}</h1>
       </div>
       <div className="mt-4">
         <select className="form-select" value={country} onChange={handleOnChange}>
-          <option value="Select country">Select country</option>
-          <option value="Germany">Germany</option>
-          <option value="United Kingdom">United Kingdom</option>
-          <option value="Italy">Italy</option>
+        <option value="Select country">Select country</option>
+        {emergencyData.payload.map((obj) => {
+            return <option value={obj.country}>{obj.country}</option>
+          })}
         </select>
       </div>
-      {country !== "Select country" && <Countries country ={country} />}
+      {country !== "Select country" && <Countries country={country} emergencyData={emergencyData} />}
       
     </div>
-  );
+  )} else {
+    return (
+      <p> Data not found... </p>
+        );
+  }
 }
