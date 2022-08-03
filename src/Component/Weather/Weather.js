@@ -243,47 +243,43 @@ function Weather() {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=1a1a53ffdffb4a6940e1c179d178a70a`
-      );
-      const data = await res.json();
+      // const res = await fetch(
+      //   `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=1a1a53ffdffb4a6940e1c179d178a70a`
+      // );
+      // const data = await res.json();
 
-      // converts date from API to corresponding day of the week
-      // const listWithDay = mockData.list.map((object) => {
+      // // converts date from API to corresponding day of the week
+      // const listWithDay = data.list.map((object) => {
       //   const date = new Date(`${object.dt_txt}`);
       //   const day = days[`${date.getDay()}`];
       //   return { ...object, day: day };
       // });
 
-      // const actualSunriseSunsetUNIX = {
-      //   // sunrise: mockData.city.sunrise + mockData.city.timezone,
-      //   // sunset: mockData.city.sunset + mockData.city.timezone,
-      //   sunrise: mockData.city.sunrise,
-      //   sunset: mockData.city.sunset,
+      // const UNIXSunriseSunset = {
+      //   sunrise: data.city.sunrise,
+      //   sunset: data.city.sunset,
       // };
 
-      // console.log("actualSunriseSunsetUNIX:", actualSunriseSunsetUNIX);
+      // // offset due to british summer time/weird interaction with API
+      // const summertimeOffset = 3600;
+
+      // const actualSunriseSunset = {
+      //   sunrise:
+      //     UNIXSunriseSunset.sunrise + data.city.timezone - summertimeOffset,
+      //   sunset:
+      //     UNIXSunriseSunset.sunset + data.city.timezone - summertimeOffset,
+      // };
 
       // const convertSunriseSunset = {
-      //   sunrise: unixToHoursMins(mockData.city.sunrise),
-      //   sunset: unixToHoursMins(mockData.city.sunset),
+      //   sunrise: unixToHoursMins(actualSunriseSunset.sunrise),
+      //   sunset: unixToHoursMins(actualSunriseSunset.sunset),
       // };
 
-      // console.log("actual sunrise/sunset:", convertSunriseSunset);
-
-      // const  = {
-      //   // sunrise: unixToHoursMins(mockData.city.sunrise),
-      //   // sunset: unixToHoursMins(mockData.city.sunset),
-      //   sunrise: mockData.city.sunrise,
-      //   sunset: mockData.city.sunset,
-      // };
-
-      // gives data in the format for our use case
+      // // gives data in the format for our use case
       // const formattedData = {
-      //   ...mockData,
+      //   ...data,
       //   list: listWithDay,
       //   city: {
-      //     timeZone: mockData.city.timezone,
       //     sunrise: convertSunriseSunset.sunrise,
       //     sunset: convertSunriseSunset.sunset,
       //   },
@@ -291,30 +287,26 @@ function Weather() {
       // console.log("%c Formatted Data:", "color: red", formattedData);
 
       // converts date from API to corresponding day of the week
-      const listWithDay = data.list.map((object) => {
+      const listWithDay = mockData.list.map((object) => {
         const date = new Date(`${object.dt_txt}`);
         const day = days[`${date.getDay()}`];
         return { ...object, day: day };
       });
 
       const UNIXSunriseSunset = {
-        sunrise: data.city.sunrise,
-        sunset: data.city.sunset,
+        sunrise: mockData.city.sunrise,
+        sunset: mockData.city.sunset,
       };
-
-      console.log("unix before:", UNIXSunriseSunset);
 
       // offset due to british summer time/weird interaction with API
       const summertimeOffset = 3600;
 
       const actualSunriseSunset = {
         sunrise:
-          UNIXSunriseSunset.sunrise + data.city.timezone - summertimeOffset,
+          UNIXSunriseSunset.sunrise + mockData.city.timezone - summertimeOffset,
         sunset:
-          UNIXSunriseSunset.sunset + data.city.timezone - summertimeOffset,
+          UNIXSunriseSunset.sunset + mockData.city.timezone - summertimeOffset,
       };
-
-      console.log("unix after:", actualSunriseSunset);
 
       const convertSunriseSunset = {
         sunrise: unixToHoursMins(actualSunriseSunset.sunrise),
@@ -323,7 +315,7 @@ function Weather() {
 
       // gives data in the format for our use case
       const formattedData = {
-        ...data,
+        ...mockData,
         list: listWithDay,
         city: {
           sunrise: convertSunriseSunset.sunrise,
