@@ -1,12 +1,17 @@
-/* .main-container{
-    display: ;
-} */
+/* pads top so that the banner image is visible beneath navbar */
+.main-container {
+    padding-top: 50px;
+}
+
+/* pads bottom of body so footer doesn't cover content */
+.main-body {
+    padding-bottom: 50px;
+}
 
 .homebuttons{
     display: flex;
     justify-content: space-evenly;
     margin-top: 70px;
-
 } 
 
 

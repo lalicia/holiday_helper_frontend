@@ -42,7 +42,7 @@ function TodoList() {
 
   return (
     <div className="todo-list">
-      <h2 className="title">Packing List</h2>
+      <h2 className="page-title">Packing List</h2>
       {todos.map((todo) => (
         <Todo
           key={todo.id}
