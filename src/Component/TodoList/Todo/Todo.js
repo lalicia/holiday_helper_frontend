@@ -34,6 +34,7 @@ export function Todo(props) {
         title={title}
         isComplete={isComplete}
         isEditing={isEditing}
+        onClickToggle={onClickToggle}
         editedTodoTitle={editedTodoTitle}
         setEditedTodoTitle={setEditedTodoTitle}
       />

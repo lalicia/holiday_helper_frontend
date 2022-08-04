@@ -3,6 +3,7 @@
   flex-direction: row;
   margin: 10px;
   align-items: baseline;
+  justify-content: space-between;
 }
 
 .todo-list {
@@ -22,6 +23,8 @@
 
 .add-todo {
   margin: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .add-todo-add {
@@ -44,7 +47,7 @@
   background-image: linear-gradient(180deg, #ffdd4a, #fe9000);
   border: none;
   border-radius: 5px;
-  padding: 9px;
+  padding: 10px;
 }
 
 .edit-button {
@@ -53,7 +56,7 @@
   background-image: linear-gradient(180deg, #ffdd4a, #fe9000);
   border: none;
   border-radius: 5px;
-  padding: 9px;
+  padding: 10px;
 }
 
 .delete-button {
@@ -62,7 +65,8 @@
   background-image: linear-gradient(180deg, #ffdd4a, #fe9000);
   border: none;
   border-radius: 5px;
-  padding: 9px;
+  padding: 10px;
+  margin-left: 10px;
 }
 
 .add-text {
@@ -85,4 +89,10 @@
     font-family: Comfortaa;
     border-width: 1px;
     padding: 4px;
+}
+
+.icon {
+    color: #094074;
+    height: 20px;
+    width: 20px;
 }
