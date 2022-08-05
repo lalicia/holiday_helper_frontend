@@ -14,6 +14,9 @@ describe('nav bar',() => {
       cy.get('.menu-icon').click()
       cy.get('#contacts').click()
       cy.wait(1000)
-    
+      cy.get('.menu-icon').click()
+      cy.get('#home').click()
+      cy.wait(1000)
+      
   })
 })
