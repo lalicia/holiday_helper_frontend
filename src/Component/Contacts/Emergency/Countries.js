@@ -1,4 +1,5 @@
 // import { DummyData } from "../DummyData";
+import "../Contacts.css"
 
 function Countries({ country, emergencyData }) {
   const filteredData = emergencyData.payload.filter((obj) => {
@@ -11,15 +12,15 @@ function Countries({ country, emergencyData }) {
       <>
         {/* use ternary oprator instead of nullishcoalescing operator (??) becouse browser support is better */}
 
-        <p>{`Fire: ${countryObj.fire ? countryObj.fire : "---"}`}</p>
+        <p className="selected-country">{`Fire: ${countryObj.fire ? countryObj.fire : "---"}`}</p>
 
-        <p>{`Police: ${countryObj.police ? countryObj.police : "---"}`}</p>
+        <p className="selected-country">{`Police: ${countryObj.police ? countryObj.police : "---"}`}</p>
 
-        <p>{`Ambulance: ${
+        <p className="selected-country">{`Ambulance: ${
           countryObj.ambulance ? countryObj.ambulance : "---"
         }`}</p>
 
-        <p>{`Embassy: ${countryObj.embassy ? countryObj.embassy : "---"}`}</p>
+        <p className="selected-country">{`Embassy: ${countryObj.embassy ? countryObj.embassy : "---"}`}</p>
       </>
     );
   } else {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AZDirectory from "../AZDirectory/AZDirectory";
 import Countries from "./Countries";
+import "../Contacts.css"
 
 export default function Emergency() {
   const [country, setCountry] = useState("Select country");
@@ -50,8 +51,8 @@ export default function Emergency() {
               return <option value={obj.country}>{obj.country}</option>;
             })}
           </select>
-          <h1>{`${
-            country == "Select country" ? "Select Country" : country
+          <h1 className="country-title">{`${
+            country == "Select country" ? "" : country
           }`}</h1>
         </div>
         {country !== "Select country" && (
