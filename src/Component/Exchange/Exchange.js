@@ -27,7 +27,7 @@ function Exchange() {
 
   //needed to send through API fetch, will not accept apikey without this
   const myHeaders = new Headers();
-  myHeaders.append("apikey", "o62KHCs9aHwr3OhHAVnkz6ldvYGc4edD");
+  myHeaders.append("apikey", "AJoQsx94UToqxm1MIkdZ0lRQ4CKHvR2m");
 
   const requestOptions = {
     method: "GET",
@@ -100,7 +100,16 @@ function Exchange() {
 
       //this is the array for the bottom axis of the chart with the dynamic dates from the historical fetch
       const yAxis = Object.keys(xAxis);
-      setBottomAxis(yAxis);
+      console.log("yaxis: ", yAxis);
+      const shortDate = yAxis.map((longDate) => {
+        const date = new Date(longDate);
+        const month = ("0" + (date.getMonth() + 1)).slice(-2);
+        const day = ("0" + date.getDate()).slice(-2);
+        return `${month}-${day}`;
+      });
+
+      console.log(shortDate);
+      setBottomAxis(shortDate);
     }
     getRates();
   }, [url]);
@@ -163,6 +172,22 @@ function Exchange() {
 
   const options = {
     responsive: true,
+    scales: {
+      x: {
+        title: {
+          display: true,
+          align: "center",
+          text: "Date",
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          align: "center",
+          text: "Rate",
+        },
+      },
+    },
     plugins: {
       legend: {
         position: top,
