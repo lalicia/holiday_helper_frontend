@@ -1,5 +1,5 @@
 export function TodoTitle(props) {
-  const { isEditing, isComplete, title, editedTodoTitle, setEditedTodoTitle } =
+  const { isEditing, isComplete, title, onClickToggle, editedTodoTitle, setEditedTodoTitle } =
     props;
 
   function onTodoTitleChange(e) {
@@ -9,7 +9,7 @@ export function TodoTitle(props) {
 
   return (
     <div className="todo-title">
-      <span className="tick-cross">{isComplete ? `✔️` : `⭕`}</span>
+      <span className="tick-cross" onClick={onClickToggle}>{isComplete ? `✔️` : `⭕`}</span>
       {isEditing ? (
         <input id="edit-input"
           className="edit-todo-input"

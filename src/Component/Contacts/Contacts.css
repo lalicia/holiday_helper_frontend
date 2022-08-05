@@ -1,0 +1,20 @@
+.form-select {
+    margin-left: 30px;
+    color: #094074;
+    font-family: Comfortaa;
+    padding: 3px
+
+}
+
+.country-title {
+    font-size: 18px;
+    color: #094074;
+    margin-left: 20px;
+    margin-top: 25px;
+}
+
+.selected-country {
+    color: #094074;
+    margin-left: 30px;
+    font-size: 14px;
+}
