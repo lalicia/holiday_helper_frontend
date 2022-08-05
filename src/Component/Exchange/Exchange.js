@@ -199,6 +199,7 @@ function Exchange() {
         <input
           className="input-box"
           id="Amount"
+          autoComplete="off"
           onChange={(e) => {
             setAmount(e.target.value);
           }}
@@ -210,6 +211,7 @@ function Exchange() {
           <input
             className="input-box"
             id="From"
+            autoComplete="off"
             onChange={(e) => {
               setFrom(e.target.value);
             }}
@@ -220,6 +222,7 @@ function Exchange() {
           <input
             className="input-box"
             id="To"
+            autoComplete="off"
             onChange={(e) => {
               setTo(e.target.value.toUpperCase());
             }}
