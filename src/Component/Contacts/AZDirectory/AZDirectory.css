@@ -1,0 +1,55 @@
+/* .table-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0px;
+    margin: 0px 20px;
+    font-weight: 600;
+} */
+
+.table-header {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0px;
+    font-size: 14px;
+}
+
+.country-list {
+    list-style: none;
+    padding: 0px;
+    margin: 0px 10px; 
+    width: 40px;  
+    font-size: 10px;
+}
+
+.country-list > li {
+    margin: 5px 0px;
+    display:flex;
+    justify-content: space-evenly;
+    /* font-size: 0.7rem;  */
+}
+
+.AZDirectory > h3 {
+    margin-top: 70px;
+    text-align: center;
+}
+
+.columns-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 35vh;
+    overflow-y: auto;
+}
+
+.AZ-title {
+    color: #094074;
+}

@@ -61,6 +61,7 @@
   padding: 0;
   opacity: 1;
   list-style: none;
+  margin-left: 15px;
 }
 
 .menu > ul > li {
