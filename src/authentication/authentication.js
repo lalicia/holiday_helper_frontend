@@ -48,7 +48,7 @@ function Authentication() {
         <input ref={emailRef} placeholder="Email" />
         <input ref={passwordRef} type="password" placeholder="Password" />
       </div>
-      //conditional render if user is loged in disable login/signup 
+      {/* conditional render if user is loged in disable login/signup  */}
       <button disabled={ loading || currentUser } onClick={handleSignup}>Sign Up</button>
       <button disabled={ loading || currentUser } onClick={handleLogin}>Log In</button>
       <button disabled={ loading || !currentUser } onClick={handleLogout}>Log Out</button>
