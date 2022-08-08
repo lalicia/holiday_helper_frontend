@@ -1,14 +1,4 @@
-/* .table-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    list-style: none;
-    padding: 0px;
-    margin: 0px 20px;
-    font-weight: 600;
-} */
-
+/* 
 .table-header {
     font-size: 1.1rem;
     font-weight: 700;
@@ -33,10 +23,10 @@
     margin: 5px 0px;
     display:flex;
     justify-content: space-evenly;
-    /* font-size: 0.7rem;  */
+
 }
 
-.AZDirectory > h3 {
+.az-table-headers > h3 {
     margin-top: 70px;
     text-align: center;
 }
@@ -49,7 +39,146 @@
     height: 35vh;
     overflow-y: auto;
 }
+ */
 
-.AZ-title {
+.az-title {
     color: #094074;
+    margin-left: 20px;
+    margin-top: 25px;
+    font-size: 18px;
 }
+
+/* CSS that handles the styling of the list elements in the AZ Directory table  */
+.az-table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    overflow-y: auto;
+    color: var(--dark-blue)
+}
+
+.az-table > ul {
+    list-style: none;
+    display: flex;
+    width: 80%;
+    font-size: 14px;
+    padding: 0;
+}
+
+.az-table > ul > :first-child {
+    width: 25%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-right: 10px;
+}
+
+.az-table > ul > :nth-child(2) {
+    width: 20%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.az-table > ul > :nth-child(3) {
+    width: 20%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.az-table > ul > :nth-child(4) {
+    width: 20%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.az-table > ul > :nth-child(5) {
+    width: 20%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+}
+
+
+/* CSS that handles the headings in the AZ Directory table */
+.az-table-headers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--dark-blue);
+}
+
+.az-table-headers > ul {
+    list-style: none;
+    display: flex;
+    width: 80%;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0;
+}
+
+.az-table-headers > ul > :first-child {
+    width: 25%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-right: 10px;
+}
+
+.az-table-headers > ul > :nth-child(2) {
+    width: 20%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.az-table-headers > ul > :nth-child(3) {
+    width: 20%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.az-table-headers > ul > :nth-child(4) {
+    width: 20%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.az-table-headers > ul > :nth-child(5) {
+    width: 20%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+}
+
+
+/* CSS that runs when user clicks on selected element */
+.az-table-headers > ul:active > * {
+    width: auto;
+    text-overflow: none;
+    overflow: visible;
+    white-space: initial;
+    justify-content: space-between;
+    margin: 0 auto 0 0;
+}
+
+.az-table > ul:hover > * {
+    width: auto;
+    text-overflow: none;
+    overflow: visible;
+    white-space: initial;
+    justify-content: space-between;
+    margin: 0 auto 0 0;
+    font-weight: 600;
+}
+
+.az-table > ul:active > * {
+
+}
+
+

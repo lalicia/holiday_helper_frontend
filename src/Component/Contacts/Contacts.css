@@ -1,10 +1,23 @@
+
 .form-select {
     margin-left: 30px;
     color: #094074;
     font-family: Comfortaa;
-    padding: 3px
-
+    padding: 5px;
+    background-color: var(--light-blue);
+    border: none;
+    border-radius: 20px;
 }
+
+.form-select > option {
+    background-color: white;
+    color: var(--dark-blue);
+}
+
+.form-select > option:checked {
+    display: none;
+}
+
 
 .country-title {
     font-size: 18px;
