@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-import { signup, login, logout, useAuth } from "../../firebase-config";
+import { signup, login, logout, useAuth } from "../firebase-config";
 
 function Authentication() {
   const [ loading, setLoading ] = useState(false);
