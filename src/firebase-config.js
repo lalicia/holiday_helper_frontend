@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 
 
 const firebaseConfig = {
@@ -13,11 +14,9 @@ const firebaseConfig = {
   measurementId: "G-DCTBHJV3ZG"
 };
 
-
-
-
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
+export const db = getDatabase(app);
 
 export function signup(email, password) {
   return createUserWithEmailAndPassword(auth, email, password);

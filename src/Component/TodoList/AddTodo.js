@@ -1,6 +1,13 @@
 import { useState } from "react";
+import Authentication from "../../authentication/authentication";
+import { uid } from "uid";
+import { set, ref, onValue, remove, update } from "firebase/database";
+import { signup, login, logout, auth, db, useAuth } from "../../firebase-config"
 
+
+// import { Auth, db } from "../../firebase-config";
 export function AddTodo({ addTodo }) {
+  const [todo, setTodo] = useState("");
   const [todoTitle, setTodoTitle] = useState("");
 
   function onChange(e) {
@@ -16,15 +23,28 @@ export function AddTodo({ addTodo }) {
     setTodoTitle("");
   }
 
+
+   // add
+  const writeToDatabase = () => {
+    const uidd = uid();
+    set(ref(db, `/${auth.currentUser.uid}/${uidd}`), {
+      todo: todo,
+      uidd: uidd
+    });
+
+    setTodo("");
+
+  };
   return (
     <div className="add-todo">
+      <Authentication />
       <input className="add-text"
         type="text"
         placeholder="I need to pack..."
         value={todoTitle}
         onChange={onChange}
       />
-      <button className="add-todo-add" onClick={onClickAdd}>
+      <button className="add-todo-add" onClick={writeToDatabase}>
         Add Item
       </button>
     </div>

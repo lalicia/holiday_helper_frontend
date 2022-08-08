@@ -2,7 +2,11 @@ import { useState } from "react";
 import { nanoid } from "nanoid";
 import { Todo } from "./Todo/Todo";
 import { AddTodo } from "./AddTodo";
+// import { set, ref, onValue, remove, update } from "firebase/database";
+// import { db } from "../../firebase-config"
+// import { auth,} from "../../firebase-config";
 import "./Todo.css"
+
 
 const initialTodos = [
   { id: nanoid(), title: "Toothbrush", done: false },
@@ -22,6 +26,16 @@ function TodoList() {
     setTodos([...todos, newTodo]);
   }
 
+  //  function addTodo(newTodoTitle) {
+  //   const nanoid = nanoid();
+  //   set(ref(db, `/${auth.currentUser.nanoid}/${nanoid}`), {
+  //     addTodo: addTodo,
+  //     nanoid: nanoid
+  //   });
+
+  //   setTodo("");
+  // };
+  
   function updateTodo(id, updatedTodo) {
     const newTodos = todos.map((todo) => {
       if (todo.id === id) {
