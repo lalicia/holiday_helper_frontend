@@ -3,9 +3,9 @@
 
 describe('packing-list page', () => {
   it('testing functionalty of packing-list page', () => {
-
-      cy.visit('http://localhost:3000')
-      cy.get('.homebuttons1').contains('a').click()
+      
+      cy.viewport(375, 812)
+      cy.visit('http://localhost:3000/packing-list')
       cy.get('.page-title').contains('Packing List')
       cy.get(':nth-child(2) > .todo-title > .tick-cross').click()
       cy.wait(1000)
