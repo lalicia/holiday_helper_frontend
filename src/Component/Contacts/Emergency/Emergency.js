@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import AZDirectory from "../AZDirectory/AZDirectory";
 import Countries from "./Countries";
-import "../Contacts.css"
+import "../Contacts.css";
 
 export default function Emergency() {
   const [country, setCountry] = useState("Select country");
@@ -10,7 +10,7 @@ export default function Emergency() {
   useEffect(() => {
     async function getEmergencyData() {
       const response = await fetch(
-        "https://holiday-helper.herokuapp.com/emergency"
+        "https://holiday-helper.herokuapp.com/emergency/asc"
       );
 
       let data = await response.json();
@@ -30,17 +30,10 @@ export default function Emergency() {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
-  // const renderResult = () => {
-  //   let result;
-  //   country === "select country"
-  //     ? (result = "select country")
-  //     : (result = makeFirstLetterCapital(country));
-  //   return result;
-  // };
   if (emergencyData) {
     return (
       <div className="emergency-component-div">
-        <div className="mt-4">
+        <div className="form-select-div">
           <select
             className="form-select"
             value={country}
@@ -51,10 +44,11 @@ export default function Emergency() {
               return <option value={obj.country}>{obj.country}</option>;
             })}
           </select>
-          <h1 className="country-title">{`${
-            country == "Select country" ? "" : country
-          }`}</h1>
         </div>
+        <h2 className="country-title">{`${
+          country == "Select country" ? "" : makeFirstLetterCapital(country)
+        }`}</h2>
+
         {country !== "Select country" && (
           <Countries country={country} emergencyData={emergencyData} />
         )}
