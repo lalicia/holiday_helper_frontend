@@ -3,7 +3,7 @@ import "./AZDirectory.css";
 export default function AZDirectory({ emergencyData }) {
   return (
     <div className="AZDirectory">
-      <h2 className="az-title">A-Z Directory</h2>
+      <h2 className="page-title">A-Z Directory</h2>
       <div className="az-table-headers">
         <ul>
           <li>Country</li>
