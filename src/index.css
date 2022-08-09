@@ -24,7 +24,7 @@ code {
 /* universal for all the titles on pages, no need to import, just add this className*/
 .page-title {
   font-size: 20px;
-  margin-top: 25px;
+  margin-top: 35px;
   margin-left: 20px;
   color: #094074;
 }

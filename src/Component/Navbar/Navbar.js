@@ -29,27 +29,27 @@ function Menu({ showMenu, setShowMenu }) {
     <nav className={classMenu}>
       <ul>
         <li>
-          <Link className={classLink} onClick={onClickLink} to="/">
+          <Link id="home" className={classLink} onClick={onClickLink} to="/">
             Home
           </Link>
         </li>
         <li>
-          <Link className={classLink} onClick={onClickLink} to="/packing-list">
+          <Link id="packing" className={classLink} onClick={onClickLink} to="/packing-list">
             Packing List
           </Link>
         </li>
         <li>
-          <Link className={classLink} onClick={onClickLink} to="/weather">
+          <Link id="weather" className={classLink} onClick={onClickLink} to="/weather">
             Weather Forecast
           </Link>
         </li>
         <li>
-          <Link className={classLink} onClick={onClickLink} to="/exchange">
+          <Link id="ex" className={classLink} onClick={onClickLink} to="/exchange">
             Exchange Rates
           </Link>
         </li>
         <li>
-          <Link className={classLink} onClick={onClickLink} to="/contacts">
+          <Link id="contacts" className={classLink} onClick={onClickLink} to="/contacts">
             Emergency Contacts
           </Link>
         </li>

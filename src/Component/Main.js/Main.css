@@ -1,7 +1,7 @@
 /* pads top of page so that the banner image is visible beneath navbar */
 /* pads bottom of body so footer doesn't cover content */
 .main-body {
-    padding-top: 70px;
+    padding-top: 60px;
     padding-bottom: 50px;
 }
 
@@ -12,4 +12,18 @@
     margin-top: 70px;
 } 
 
+.homebuttons1 {
+    margin-left: 1.5rem;
+    /* margin-right: 1rem; */
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
 
+.homebuttons2 {
+    /* margin-left: 1rem; */
+    margin-right: 1.5rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}

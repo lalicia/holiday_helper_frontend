@@ -1,25 +1,21 @@
 .Icon {
-    width: 65px;
-    height: 65px;
-    padding: 30px;
-    background-image: linear-gradient(180deg, #FFDD4A, #FE9000);
-    color: #094074;
-    border-radius: 5%;
-     box-shadow: 5px 10px 10px #bcb8b8;
-
+  width: 65px;
+  height: 65px;
+  padding: 30px;
+  background-image: linear-gradient(180deg, #ffdd4a, #fe9000);
+  color: #094074;
+  border-radius: 5%;
+  box-shadow: 5px 10px 10px #bcb8b8;
 }
 
-
-.button-title{
-    font-size: 14px;
-    font-weight: 700;
-    color: #094074;
+.button-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #094074;
+  /* text-align: center; */
 }
 
 .main-homebutton {
-    text-decoration: none;
-    text-align: center;
-  }
-
-
-
+  text-decoration: none;
+  text-align: center;
+}
