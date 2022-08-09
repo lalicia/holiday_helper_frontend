@@ -1,9 +1,5 @@
-import React from 'react'
-import Search from "./Search.js";
-import List from "./List.js";
-
-import {DummyData} from "./DummyData.js"
-import Emergency from './Emergency/Emergency.js';
+import React from "react";
+import Emergency from "./Emergency/Emergency.js";
 
 function Contacts() {
   return (
@@ -11,9 +7,8 @@ function Contacts() {
       <h2 className="page-title">Emergency Contacts</h2>
       {/* <Search /> */}
       <Emergency />
-      
     </div>
-  )
+  );
 }
 
-export default Contacts
+export default Contacts;
