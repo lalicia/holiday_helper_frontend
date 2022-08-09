@@ -496,7 +496,7 @@ function Weather() {
 
   return (
     <div>
-      <h3 className="page-title"> Weather Forecast</h3>
+      <h2 className="page-title"> Weather Forecast</h2>
       <div className="Weather">
         <div className="weather-searchbar-div">
           <input

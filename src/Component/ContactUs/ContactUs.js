@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 function ContactUs() {
   return (
     <div>
-      <div className="page-title">Contact Us</div>
+      <h2 className="page-title">Contact Us</h2>
       <div className="contact-margin">
         <Icon className="contact-icon" icon="ic:outline-email" />
         <span className="bold-text">Email:</span>
@@ -33,7 +33,7 @@ function ContactUs() {
           <span className="contact-text">A0 0AA</span>
         </div>
       </div>
-      <div className="sub-title">Contact Form</div>
+      <h2 className="sub-title">Contact Form</h2>
       <div className="contact-form-container">
         <span className="box-text">Email:</span>
         <span className="input-email"></span>
