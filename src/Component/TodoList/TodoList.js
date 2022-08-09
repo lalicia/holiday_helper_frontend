@@ -1,11 +1,12 @@
-import { useState } from "react";
+import Authentication from "../authentication/authentication"
+import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import { Todo } from "./Todo/Todo";
 import { AddTodo } from "./AddTodo";
-// import { set, ref, onValue, remove, update } from "firebase/database";
-// import { db } from "../../firebase-config"
-// import { auth,} from "../../firebase-config";
+import { set, ref, onValue, remove, update, get } from "firebase/database";
+import { signup, login, logout, auth, db, useAuth } from "../../firebase-config"
 import "./Todo.css"
+
 
 
 const initialTodos = [
@@ -15,26 +16,34 @@ const initialTodos = [
 ];
 
 function TodoList() {
-  const [todos, setTodos] = useState(initialTodos);
+  const [todos, setTodos] = useState([]);
 
-  function addTodo(newTodoTitle) {
+  useEffect(() => {
+    onValue(ref(db), (snapshot) => {
+     
+      const data = snapshot.val();
+  
+      console.log(data)
+      setTodos(data[auth.currentUser.uid] ?? initialTodos )
+    });
+  }, []);
+
+  
+ function addTodo(newTodoTitle) {
+    const todoId = nanoid()
     const newTodo = {
-      id: nanoid(),
+      id: todoId,
       title: newTodoTitle,
       done: false,
     };
-    setTodos([...todos, newTodo]);
+   
+   const newArTodo = [...todos, newTodo]
+    set(ref(db, `/${auth.currentUser.uid}`),
+      newArTodo)
+   setTodos(newArTodo);  
   }
-
-  //  function addTodo(newTodoTitle) {
-  //   const nanoid = nanoid();
-  //   set(ref(db, `/${auth.currentUser.nanoid}/${nanoid}`), {
-  //     addTodo: addTodo,
-  //     nanoid: nanoid
-  //   });
-
-  //   setTodo("");
-  // };
+    
+      
   
   function updateTodo(id, updatedTodo) {
     const newTodos = todos.map((todo) => {
@@ -46,17 +55,22 @@ function TodoList() {
       }
       return todo;
     });
+    set(ref(db, `/${auth.currentUser.uid}`),
+      newTodos)
     setTodos(newTodos);
   }
 
   function deleteTodo(id) {
     const newTodos = todos.filter((todo) => todo.id !== id);
+    set(ref(db, `/${auth.currentUser.uid}`),
+      newTodos) 
     setTodos(newTodos);
   }
 
   return (
     <div className="todo-list">
       <h2 className="page-title">Packing List</h2>
+      <Authentication  />
       {todos.map((todo) => (
         <Todo
           key={todo.id}
