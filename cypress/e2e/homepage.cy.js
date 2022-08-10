@@ -2,7 +2,7 @@ describe('homepage',() => {
   it('test functionalty of home page', () => {
     
     cy.viewport(375, 812)
-    cy.visit('http://localhost:3000/')
+    cy.visit('https://holiday-helper.netlify.app/')
     cy.get('.homebuttons').should('contain' , 'Packing List').and('contain', 'Emergency Contact').and('contain', 'Weather Forecast').and('contain', 'Exchange Rates')
     cy.get('[href="/packing-list"] > .Icon').click()
     cy.wait(1500)

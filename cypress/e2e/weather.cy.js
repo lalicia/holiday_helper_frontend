@@ -2,7 +2,7 @@ describe('weather page',() => {
   it('test functionalty of weather page', () => {
       
       cy.viewport(375, 812)
-      cy.visit('http://localhost:3000/weather')
+      cy.visit('https://holiday-helper.netlify.app/weather')
       cy.get('.page-title').contains('Weather Forecast')
       cy.get('.weather-input').type('pasis')
       cy.get('.iconify > path').click({force: true}).request({method:'GET', url:'https://api.openweathermap.org/data/2.5/forecast?q=pasis&units=metric&appid=1a1a53ffdffb4a6940e1c179d178a70a', failOnStatusCode: false,}).as('404 weather').its('status').should('equal', 404)

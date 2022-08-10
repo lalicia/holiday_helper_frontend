@@ -2,7 +2,7 @@ describe('nav bar',() => {
   it('test functionalty of nav bar', () => {
 
       cy.viewport(375, 812)
-      cy.visit('http://localhost:3000')
+      cy.visit('https://holiday-helper.netlify.app/')
       cy.get('.menu-icon').click()
       cy.get('ul').should('contain', 'Packing List').and('contain', 'Exchange Rates').and('contain', 'Weather Forecast').and('contain', 'Emergency Contacts')
       cy.get('#packing').click()
