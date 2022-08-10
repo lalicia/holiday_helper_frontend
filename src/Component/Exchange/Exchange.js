@@ -27,7 +27,7 @@ function Exchange() {
 
   //needed to send through API fetch, will not accept apikey without this
   const myHeaders = new Headers();
-  myHeaders.append("apikey", "AJoQsx94UToqxm1MIkdZ0lRQ4CKHvR2m");
+  myHeaders.append("apikey", `${process.env.REACT_APP_EXCHANGE}`);
 
   const requestOptions = {
     method: "GET",
@@ -37,61 +37,62 @@ function Exchange() {
 
   useEffect(() => {
     async function getRates() {
-      // const response = await fetch(url, requestOptions);
-      // const response2 = await fetch(historical, requestOptions);
+      console.log(`${process.env.REACT_APP_EXCHANGE}`);
+      const response = await fetch(url, requestOptions);
+      const response2 = await fetch(historical, requestOptions);
 
       //fake data to use to not have to request from API
-      let data = {
-        date: "2022-08-09",
-        info: {
-          rate: 0.845108,
-          timestamp: 1660035303,
-        },
-        query: {
-          amount: 50,
-          from: "EUR",
-          to: "GBP",
-        },
-        result: 42.2554,
-        success: true,
-      };
-      let data2 = {
-        success: true,
-        timeseries: true,
-        start_date: "2022-07-20",
-        end_date: "2022-07-27",
-        base: "USD",
-        rates: {
-          "2022-07-20": {
-            GBP: 0.83535,
-          },
-          "2022-07-21": {
-            GBP: 0.83365,
-          },
-          "2022-07-22": {
-            GBP: 0.833021,
-          },
-          "2022-07-23": {
-            GBP: 0.833021,
-          },
-          "2022-07-24": {
-            GBP: 0.834304,
-          },
-          "2022-07-25": {
-            GBP: 0.82957,
-          },
-          "2022-07-26": {
-            GBP: 0.830825,
-          },
-          "2022-07-27": {
-            GBP: 0.822205,
-          },
-        },
-      };
+      // let data = {
+      //   date: "2022-08-09",
+      //   info: {
+      //     rate: 0.845108,
+      //     timestamp: 1660035303,
+      //   },
+      //   query: {
+      //     amount: 50,
+      //     from: "EUR",
+      //     to: "GBP",
+      //   },
+      //   result: 42.2554,
+      //   success: true,
+      // };
+      // let data2 = {
+      //   success: true,
+      //   timeseries: true,
+      //   start_date: "2022-07-20",
+      //   end_date: "2022-07-27",
+      //   base: "USD",
+      //   rates: {
+      //     "2022-07-20": {
+      //       GBP: 0.83535,
+      //     },
+      //     "2022-07-21": {
+      //       GBP: 0.83365,
+      //     },
+      //     "2022-07-22": {
+      //       GBP: 0.833021,
+      //     },
+      //     "2022-07-23": {
+      //       GBP: 0.833021,
+      //     },
+      //     "2022-07-24": {
+      //       GBP: 0.834304,
+      //     },
+      //     "2022-07-25": {
+      //       GBP: 0.82957,
+      //     },
+      //     "2022-07-26": {
+      //       GBP: 0.830825,
+      //     },
+      //     "2022-07-27": {
+      //       GBP: 0.822205,
+      //     },
+      //   },
+      // };
 
-      // let data = await response.json();
-      // let data2 = await response2.json();
-      // console.log("result: ", data.result);
+      let data = await response.json();
+      let data2 = await response2.json();
+      console.log("result: ", data.result);
 
       const rateResult = data.result.toFixed(2);
 
