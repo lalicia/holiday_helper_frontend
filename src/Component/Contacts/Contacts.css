@@ -22,12 +22,29 @@
 .country-title {
     font-size: 18px;
     color: #094074;
-    margin-left: 20px;
+    margin-left: 30px;
     margin-top: 25px;
 }
 
 .selected-country {
     color: #094074;
-    margin-left: 30px;
+    margin-left: 40px;
     font-size: 14px;
+}
+
+.embassy-desc {
+    font-size: 12px;
+    color: #094074;
+    font-family: "comfortaa";
+    margin-left: 30px;
+}
+
+.embassy-link {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+.embassy-link:hover {
+    color: #5ADBFF;
 }

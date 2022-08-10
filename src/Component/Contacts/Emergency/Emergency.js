@@ -53,6 +53,7 @@ export default function Emergency() {
           <Countries country={country} emergencyData={emergencyData} />
         )}
         <AZDirectory emergencyData={emergencyData} />
+        <p className="embassy-desc">For non-urgent Embassy assistance, please see: <a className="embassy-link" href="https://www.gov.uk/world/embassies" alt="gov.uk embassy information" target="_blank" rel="noreferrer">gov.uk/embassies</a></p>
       </div>
     );
   } else {
