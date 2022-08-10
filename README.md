@@ -3,11 +3,11 @@
 ## The Team
 
 - [@lalicia](https://www.github.com/lalicia)
-- []()
-- []()
-- []()
-- []()
-- []()
+- [@mandark1](https://www.github.com/mandark1)
+- [@harryevans1997](https://github.com/harryevans1997)
+- [@hassa09](https://github.com/hassa09)
+- [@Matt994](https://github.com/Matt994)
+- [@JedHumphries](https://github.com/JedHumphries)
 
 ## The Project
 
