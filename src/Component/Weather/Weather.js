@@ -246,7 +246,7 @@ function Weather() {
     async function getData() {
       try {
         const res = await fetch(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=1a1a53ffdffb4a6940e1c179d178a70a`
+          `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${process.env.REACT_APP_WEATHER}`
         );
         const data = await res.json();
 
@@ -496,7 +496,7 @@ function Weather() {
 
   return (
     <div>
-      <h3 className="page-title"> Weather Forecast</h3>
+      <h2 className="page-title"> Weather Forecast</h2>
       <div className="Weather">
         <div className="weather-searchbar-div">
           <input

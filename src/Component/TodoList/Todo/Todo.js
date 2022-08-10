@@ -12,6 +12,7 @@ export function Todo(props) {
   function onClickToggle() {
     const updatedTodo = { ...todo, isComplete: !todo.isComplete };
     updateTodo(todo.id, updatedTodo);
+    // set(ref(db, `/${auth.currentUser.uid}`),
   }
 
   function onClickEdit() {
