@@ -2,7 +2,7 @@ describe('emergency contacts page', () => {
   it('test functionalty of emergency contacts page page', () => {
     
     cy.viewport(375, 812)
-    cy.visit('http://localhost:3000/contacts')
+    cy.visit('https://holiday-helper.netlify.app/contacts')
     cy.get('.page-title').contains('Emergency Contacts')
     cy.get('.az-table-headers').should('contain', 'Country').and('contain', 'Fire').and('contain', 'Ambulance').and('contain', 'Police').and('contain', 'Embassy')
     cy.get('.form-select').select('Brazil')
