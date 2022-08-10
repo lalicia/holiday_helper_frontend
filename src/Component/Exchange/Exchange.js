@@ -37,51 +37,66 @@ function Exchange() {
 
   useEffect(() => {
     async function getRates() {
-      const response = await fetch(url, requestOptions);
-      const response2 = await fetch(historical, requestOptions);
+      // const response = await fetch(url, requestOptions);
+      // const response2 = await fetch(historical, requestOptions);
 
-      let data = await response.json();
-      let data2 = await response2.json();
-      console.log("result: ", data.result);
+      //fake data to use to not have to request from API
+      let data = {
+        date: "2022-08-09",
+        info: {
+          rate: 0.845108,
+          timestamp: 1660035303,
+        },
+        query: {
+          amount: 50,
+          from: "EUR",
+          to: "GBP",
+        },
+        result: 42.2554,
+        success: true,
+      };
+      let data2 = {
+        success: true,
+        timeseries: true,
+        start_date: "2022-07-20",
+        end_date: "2022-07-27",
+        base: "USD",
+        rates: {
+          "2022-07-20": {
+            GBP: 0.83535,
+          },
+          "2022-07-21": {
+            GBP: 0.83365,
+          },
+          "2022-07-22": {
+            GBP: 0.833021,
+          },
+          "2022-07-23": {
+            GBP: 0.833021,
+          },
+          "2022-07-24": {
+            GBP: 0.834304,
+          },
+          "2022-07-25": {
+            GBP: 0.82957,
+          },
+          "2022-07-26": {
+            GBP: 0.830825,
+          },
+          "2022-07-27": {
+            GBP: 0.822205,
+          },
+        },
+      };
+
+      // let data = await response.json();
+      // let data2 = await response2.json();
+      // console.log("result: ", data.result);
 
       const rateResult = data.result.toFixed(2);
 
       setResult(rateResult);
       setRate(data.info.rate);
-      //fake data to use to not have to request from API
-      // let data2 = {
-      //               "success": true,
-      //               "timeseries": true,
-      //               "start_date": "2022-07-20",
-      //               "end_date": "2022-07-27",
-      //               "base": "USD",
-      //               "rates": {
-      //                   "2022-07-20": {
-      //                       "GBP": 0.83535
-      //                   },
-      //                   "2022-07-21": {
-      //                       "GBP": 0.83365
-      //                   },
-      //                   "2022-07-22": {
-      //                       "GBP": 0.833021
-      //                   },
-      //                   "2022-07-23": {
-      //                       "GBP": 0.833021
-      //                   },
-      //                   "2022-07-24": {
-      //                       "GBP": 0.834304
-      //                   },
-      //                   "2022-07-25": {
-      //                       "GBP": 0.82957
-      //                   },
-      //                   "2022-07-26": {
-      //                       "GBP": 0.830825
-      //                   },
-      //                   "2022-07-27": {
-      //                       "GBP": 0.822205
-      //                   }
-      //               }
-      //           }
 
       //this drills down into the returned data to get the array for the rates
       const ratesArray = data2.rates;
@@ -224,6 +239,7 @@ function Exchange() {
         <input
           className="input-box"
           id="Amount"
+          autoComplete="off"
           onChange={(e) => {
             setAmount(e.target.value);
           }}
@@ -235,6 +251,7 @@ function Exchange() {
           <input
             className="input-box"
             id="From"
+            autoComplete="off"
             onChange={(e) => {
               setFrom(e.target.value);
             }}
@@ -245,6 +262,7 @@ function Exchange() {
           <input
             className="input-box"
             id="To"
+            autoComplete="off"
             onChange={(e) => {
               setTo(e.target.value.toUpperCase());
             }}

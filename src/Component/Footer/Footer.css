@@ -1,5 +1,6 @@
 /* "position: fixed" keeps it at the bottom */ 
 .footer{
+    color: white;
     height: 50px;
     font-size: 12px;
     font-weight: 100;
@@ -13,5 +14,10 @@
     left: 0;
     bottom: 0;
     background-color: var(--dark-blue);
+}
+
+.footer > a {
     color: white;
+    text-decoration: underline;
+    padding-bottom: 3px;
 }

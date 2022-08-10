@@ -1,113 +1,33 @@
 import "./AZDirectory.css";
 
-// const emergencyData = {
-//   payload: [
-//     {
-//       country: "TEST",
-//       fire: "TEST",
-//       ambulance: "TEST",
-//       police: "TEST",
-//       embassy: "TEST",
-//     },
-//     {
-//       country: "TEST",
-//       fire: "TEST",
-//       ambulance: "TEST",
-//       police: "TEST",
-//       embassy: "TEST",
-//     },
-//     {
-//       country: "TEST",
-//       fire: "TEST",
-//       ambulance: "TEST",
-//       police: "TEST",
-//       embassy: "TEST",
-//     },
-//     {
-//       country: "TEST",
-//       fire: "TEST",
-//       ambulance: "TEST",
-//       police: "TEST",
-//       embassy: "TEST",
-//     },
-//     {
-//       country: "TEST",
-//       fire: "TEST",
-//       ambulance: "TEST",
-//       police: "TEST",
-//       embassy: "TEST",
-//     },
-//     {
-//       country: "TEST",
-//       fire: "TEST",
-//       ambulance: "TEST",
-//       police: "TEST",
-//       embassy: "TEST",
-//     },
-//     {
-//       country: "TEST",
-//       fire: "TEST",
-//       ambulance: "TEST",
-//       police: "TEST",
-//       embassy: "TEST",
-//     },
-//     {
-//       country: "TEST",
-//       fire: "TEST",
-//       ambulance: "TEST",
-//       police: "TEST",
-//       embassy: "TEST",
-//     },
-//     {
-//       country: "TEST",
-//       fire: "TEST",
-//       ambulance: "TEST",
-//       police: "TEST",
-//       embassy: "TEST",
-//     },
-//     {
-//       country: "TEST",
-//       fire: "TEST",
-//       ambulance: "TEST",
-//       police: "TEST",
-//       embassy: "TEST",
-//     },
-//     {
-//       country: "TEST",
-//       fire: "TEST",
-//       ambulance: "TEST",
-//       police: "TEST",
-//       embassy: "TEST",
-//     },
-//     {
-//       country: "TEST",
-//       fire: "TEST",
-//       ambulance: "TEST",
-//       police: "TEST",
-//       embassy: "TEST",
-//     },
-//     {
-//       country: "TEST",
-//       fire: "TEST",
-//       ambulance: "TEST",
-//       police: "TEST",
-//       embassy: "TEST",
-//     },
-//     {
-//       country: "TEST",
-//       fire: "TEST",
-//       ambulance: "TEST",
-//       police: "TEST",
-//       embassy: "TEST",
-//     },
-//   ],
-// };
-
 export default function AZDirectory({ emergencyData }) {
   return (
     <div className="AZDirectory">
-      <h3 className="AZ-title">A-Z Directory</h3>
-      <ul className="table-header">
+      <h2 className="page-title">A-Z Directory</h2>
+      <div className="az-table-headers">
+        <ul>
+          <li>Country</li>
+          <li>Fire</li>
+          <li>Police</li>
+          <li>Ambulance</li>
+          <li>Embassy</li>
+        </ul>
+      </div>
+
+      <div className="az-table">
+        {emergencyData.payload.map((obj) => {
+          return (
+            <ul>
+              <li>{obj.country}</li>
+              <li>{obj.fire}</li>
+              <li>{obj.police}</li>
+              <li>{obj.ambulance}</li>
+              <li>{obj.embassy}</li>
+            </ul>
+          );
+        })}
+      </div>
+      {/* <ul className="table-header">
         <li>Name</li>
         <li>Fire</li>
         <li>Police</li>
@@ -141,7 +61,7 @@ export default function AZDirectory({ emergencyData }) {
             return <li>{obj.embassy}</li>;
           })}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }
