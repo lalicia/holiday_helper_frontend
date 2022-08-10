@@ -22,12 +22,12 @@
 .country-title {
     font-size: 18px;
     color: #094074;
-    margin-left: 20px;
+    margin-left: 30px;
     margin-top: 25px;
 }
 
 .selected-country {
     color: #094074;
-    margin-left: 30px;
+    margin-left: 40px;
     font-size: 14px;
 }
