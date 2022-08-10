@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import { Todo } from "./Todo/Todo";
 import { AddTodo } from "./AddTodo";
-import { set, ref, onValue, remove, update, get } from "firebase/database";
-import { signup, login, logout, auth, db, useAuth } from "../../firebase-config"
+import { set, ref, onValue } from "firebase/database";
+import { auth, db } from "../../firebase-config"
 import "./Todo.css"
 
 

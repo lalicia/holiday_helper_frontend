@@ -15,6 +15,7 @@ function Authentication() {
     setLoading(true);
     try {
       await signup(emailRef.current.value, passwordRef.current.value);
+      window.location.reload(false)
     } catch {
       alert("Error this email already exists!"); //if 
     }
