@@ -8,7 +8,7 @@ import Contacts from "../Component/Contacts/Contacts";
 import ContactUs from "../Component/ContactUs/ContactUs";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "../Component/Footer/Footer";
-import Authentication from "../authentication/authentication";
+import Authentication from "../Component/authentication/authentication";
 
 /* added extra class around navbar and body of app to keep footer separate so we can pad at the bottom to stop footer covering content */
 function App() {
