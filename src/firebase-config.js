@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 
 
 const firebaseConfig = {
@@ -10,14 +11,13 @@ const firebaseConfig = {
   storageBucket: "holiday-helper1.appspot.com",
   messagingSenderId: "73772116500",
   appId: "1:73772116500:web:14f5a1e877a4e2349dd501",
-  measurementId: "G-DCTBHJV3ZG"
+  measurementId: "G-DCTBHJV3ZG",
+  databaseURL: "https://holiday-helper1-default-rtdb.europe-west1.firebasedatabase.app"
 };
 
-
-
-
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
+export const db = getDatabase(app);
 
 export function signup(email, password) {
   return createUserWithEmailAndPassword(auth, email, password);

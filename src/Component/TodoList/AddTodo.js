@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// import { Auth, db } from "../../firebase-config";
 export function AddTodo({ addTodo }) {
   const [todoTitle, setTodoTitle] = useState("");
 
@@ -18,6 +19,7 @@ export function AddTodo({ addTodo }) {
 
   return (
     <div className="add-todo">
+      
       <input className="add-text"
         type="text"
         placeholder="I need to pack..."
