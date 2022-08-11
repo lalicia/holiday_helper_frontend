@@ -5,40 +5,50 @@ import "./authentication.css";
 
 function Authentication() {
   const [loading, setLoading] = useState(false);
+  //construct Current User 
   const currentUser = useAuth();
   const navigate = useNavigate();
-
+ //construct emailRefrence
   const emailRef = useRef();
+
   const passwordRef = useRef();
-  //fuction that handles singup
+  //fuction that handles singup awaits for user input then sends the the input to the data base 
   async function handleSignup() {
     setLoading(true);
     try {
       await signup(emailRef.current.value, passwordRef.current.value);
+      //forces the page to re-render to stop users data being viewed bu others
       window.location.reload(false);
     } catch {
-      alert("Error this email already exists!"); //if
+      //forces reload.
+      alert("Error this email already exists!");
+      
     }
     setLoading(false);
   }
-  //function that handles login process
+  //function that handles log in process
   async function handleLogin() {
     setLoading(true);
     try {
+      //wait for email and password
       await login(emailRef.current.value, passwordRef.current.value);
+      //force load users saved data
       window.location.reload(false);
     } catch {
       alert("Error wrong Email/password!");
     }
     setLoading(false);
   }
-
+ //fuction that handles login out with navigate gates user back to main after sign out
   async function handleLogout() {
     setLoading(true);
     try {
+      //await user logout
       await logout();
+      //then redirect them to main page
       navigate("/");
     } catch {
+      //catch anyother errors like spam logout
       alert("Error!");
     }
     setLoading(false);

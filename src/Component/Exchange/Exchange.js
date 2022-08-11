@@ -91,8 +91,6 @@ function Exchange() {
 
       // let data = await response.json();
       // let data2 = await response2.json();
-      console.log("result: ", data.result);
-
       const rateResult = data.result.toFixed(2);
 
       setResult(rateResult);
@@ -115,7 +113,6 @@ function Exchange() {
 
       //this is the array for the bottom axis of the chart with the dynamic dates from the historical fetch
       const yAxis = Object.keys(xAxis);
-      console.log("yaxis: ", yAxis);
       const shortDate = yAxis.map((longDate) => {
         const date = new Date(longDate);
         const month = ("0" + (date.getMonth() + 1)).slice(-2);
@@ -123,7 +120,6 @@ function Exchange() {
         return `${month}-${day}`;
       });
 
-      console.log(shortDate);
       setBottomAxis(shortDate);
     }
     getRates();
@@ -170,7 +166,6 @@ function Exchange() {
     );
   }
 
-  console.log();
 
   //this is the start of the chart
   ChartJS.register(

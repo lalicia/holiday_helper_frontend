@@ -9,7 +9,7 @@ export function AddTodo({ addTodo }) {
   }
 
   function onClickAdd() {
-    // ignoring spaces between words, checks if there is an empty string in the input. If there is, it won't add to the todolist
+    // ignors spaces between words, checks if there is an empty string in the input. If there is, it won't add to the todolist
     if (todoTitle.replace(/^\s+|\s+$/g, "") === "") {
       return;
     }

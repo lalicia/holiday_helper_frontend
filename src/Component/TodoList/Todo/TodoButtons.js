@@ -5,18 +5,13 @@ export function TodoButtons(props) {
   const {
     isEditing,
     isComplete,
-    // onClickToggle,
     onClickDelete,
     onClickEditOrDone,
   } = props;
 
   return (
     <div className="todo-buttons-div">
-      {/* {!isEditing && (
-        <button className="toggle-button" onClick={onClickToggle}>
-          {isComplete ? "Not Done" : <Icon className="icon" icon="charm:tick" />}
-        </button>
-      )} */}
+      {/* conditional rendering fuction that lets use toggle done or not done */}
       {!isComplete && (
         <button className="edit-button" onClick={onClickEditOrDone}>
           {isEditing ? "Save Changes" : <Icon className="icon" icon="ant-design:edit-outlined" />}

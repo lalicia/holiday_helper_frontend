@@ -14,15 +14,15 @@ export function Todo(props) {
     updateTodo(todo.id, updatedTodo);
     // set(ref(db, `/${auth.currentUser.uid}`),
   }
-
+  //Function that edites packing list
   function onClickEdit() {
     setIsEditing(!isEditing);
   }
-
+//Function that Deletes packing list
   function onClickDelete() {
     deleteTodo(todo.id);
   }
-
+ //Function that completes the tasks on packing list
   function onClickDone() {
     const updatedTodo = { ...todo, title: editedTodoTitle };
     updateTodo(todo.id, updatedTodo);
