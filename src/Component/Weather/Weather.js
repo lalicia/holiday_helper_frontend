@@ -229,7 +229,6 @@ function Weather() {
 
   function onChange(e) {
     setinputField(e.target.value);
-    console.log("%c onChange ran:", "color: green");
   }
 
   function onClickSearch() {
@@ -239,7 +238,6 @@ function Weather() {
     }
     setCity(inputField);
     setinputField("");
-    console.log("%c onClickSearch ran:", "color: blue");
   }
 
   useEffect(() => {
@@ -286,7 +284,6 @@ function Weather() {
             sunset: convertSunriseSunset.sunset,
           },
         };
-        console.log("%c Formatted Data:", "color: red", formattedData);
 
         // // converts date from API to corresponding day of the week
         // const listWithDay = mockData.list.map((object) => {
@@ -327,28 +324,21 @@ function Weather() {
         // console.log("%c Formatted Data:", "color: red", formattedData);
 
         const dailyData = filterDataByDay(formattedData.list);
-        console.log("daily: ", dailyData);
 
         // extracts all necessary TEMPERATURE data from the data returned from the API
         const weeklyTemps = getWeeklyTemps(dailyData);
-        console.log("weekly temps:", weeklyTemps);
 
         let minMaxTemps = minMaxTempsByWeek(weeklyTemps);
-        console.log("minMaxTemps: ", minMaxTemps);
 
         // extracts all necessary HUMIDITY data from the data returned from the API
         const weeklyHumidity = getWeeklyHumidity(dailyData);
-        console.log("weekly humidity:", weeklyHumidity);
 
         const avgWeeklyHumidity = getAvgWeeklyHumidity(weeklyHumidity);
-        console.log("avgWeeklyHumidity:", avgWeeklyHumidity);
 
         // extracts all necessary WIND data from the data returned from the API
         const weeklyWindSpeed = getWeeklyWindSpeed(dailyData);
-        console.log("weekly wind speed:", weeklyWindSpeed);
 
         const avgWeeklyWindSpeed = getAvgWeeklyWindSpeed(weeklyWindSpeed);
-        console.log("avgWeeklyWindSpeed:", avgWeeklyWindSpeed);
 
         setError("no error");
 
@@ -406,7 +396,6 @@ function Weather() {
                   },
           };
         });
-        console.log("Temp updated:", temp);
 
         setHumidity((humidity) => {
           return {
@@ -441,7 +430,6 @@ function Weather() {
                 : avgWeeklyHumidity.saturday,
           };
         });
-        console.log("humidity updated:", humidity);
 
         setWind((wind) => {
           return {
@@ -476,7 +464,6 @@ function Weather() {
                 : avgWeeklyWindSpeed.saturday,
           };
         });
-        console.log("wind updated:", wind);
 
         setSun((sun) => {
           return {
@@ -485,10 +472,8 @@ function Weather() {
             sunset: formattedData.city.sunset,
           };
         });
-        console.log("sun updated:", sun);
       } catch (error) {
         setError(error);
-        console.error(error);
       }
     }
     getData();

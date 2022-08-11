@@ -1,7 +1,7 @@
 export function TodoTitle(props) {
   const { isEditing, isComplete, title, onClickToggle, editedTodoTitle, setEditedTodoTitle } =
     props;
-
+  //fuction allowes you change main content on packing list.
   function onTodoTitleChange(e) {
     const newTodoTitle = e.target.value;
     setEditedTodoTitle(newTodoTitle);

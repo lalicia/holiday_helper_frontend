@@ -16,7 +16,6 @@ function Main() {
         <HomeBanner />
       </div>
       <div className="homebuttons">
-        {/* <SearchBar/> */}
         <div className="homebuttons1">
           <HomeButtons
             iconName={suitcase}

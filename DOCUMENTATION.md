@@ -246,3 +246,24 @@ async function getData() {
 ### Again, results from this are used to return state which then feeds in to how the elements of the page are rendered.
 
 ### The Packing List feature uses authentication to provide a personal packing list feature for the user that will persist with the changes they make. This is the only feature of the app that currently requires a login, and as such we kept the login section restricted to this page after making a conscious choice that the rest of the app should be open to all users without sign in/sign up being required.
+
+```
+construct login fuction collect email/passwrd from the user to authenticate them.
+export function login(email, password) {
+  return signInWithEmailAndPassword(auth, email, password);
+}
+```
+
+Authentication: here is an example of async function for Login async wait for user input take that check if user exists in the data base if so render the data the initial data current data has in the database. if user does't exist the catch the error and display error message {wrong email or password}
+```
+  async function handleLogin() {
+    setLoading(true);
+    try {
+      await login(emailRef.current.value, passwordRef.current.value);
+      window.location.reload(false);
+    } catch {
+      alert("Error wrong Email/password!");
+    }
+    setLoading(false);
+  }
+```

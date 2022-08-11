@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
-import { Icon, InlineIcon } from "@iconify/react";
 import Logo from "../../Assets/Logo/HHLOGO.png";
 import NavbarIcon from "./icons/NavbarIcon";
 
@@ -17,11 +16,9 @@ function Menu({ showMenu, setShowMenu }) {
     // prevent Link from redirecting on click
     e.preventDefault();
 
-    // if our showMenu state is true (visible) then set it to false
+    // if showMenu state is true (visible) then set it to false
     setShowMenu(showMenu === true ? false : true);
 
-    // <Link to="/"> becomes <a href="/"> so we grab the "href" attribute value
-    // and manually redirect to the link set in "to=" after we have closed the menu
     nav(e.target.getAttribute("href"));
   };
 
@@ -58,8 +55,7 @@ function Menu({ showMenu, setShowMenu }) {
   );
 }
 
-/* Changed Icon for NavbarIcon component that I made with SVG for icon*/
-/* Made two new classes - header shadow and no shadow. Control if shadow shows or not */
+
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   const onDisplayMenu = () => setShowMenu(!showMenu);

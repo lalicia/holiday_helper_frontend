@@ -9,6 +9,8 @@ import {
 } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
+//Firebase SDK cridential variables
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY,
   authDomain: process.env.REACT_APP_AUTHDOMAIN,
@@ -20,18 +22,23 @@ const firebaseConfig = {
   databaseURL: process.env.REACT_APP_DATABASEURL,
 };
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const db = getDatabase(app);
 
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+//construct and export auth assign to getAuth
+export const auth = getAuth(app);
+// Initialize Realtime Database and get a reference to the service
+export const db = getDatabase(app);
+//construct signup fucntion and get users email and password to creat auth
 export function signup(email, password) {
   return createUserWithEmailAndPassword(auth, email, password);
 }
-
+//construct login fuction collect email/passwrd from the user to authenticate them.
 export function login(email, password) {
   return signInWithEmailAndPassword(auth, email, password);
 }
-
+//logout function
 export function logout() {
   return signOut(auth);
 }
@@ -39,7 +46,7 @@ export function logout() {
 // Custom Hook
 export function useAuth() {
   const [currentUser, setCurrentUser] = useState();
-
+  //useEffect that check every time someone unsubs and then updates the state.
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => setCurrentUser(user));
     return unsub;
