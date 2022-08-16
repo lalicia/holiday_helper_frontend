@@ -37,60 +37,61 @@ function Exchange() {
 
   useEffect(() => {
     async function getRates() {
-      // const response = await fetch(url, requestOptions);
-      // const response2 = await fetch(historical, requestOptions);
+      const response = await fetch(url, requestOptions);
+      const response2 = await fetch(historical, requestOptions);
 
       //fake data to use to not have to request from API
-      let data = {
-        date: "2022-08-09",
-        info: {
-          rate: 1.134242,
-          timestamp: 1660035303,
-        },
-        query: {
-          amount: 50,
-          from: "EUR",
-          to: "GBP",
-        },
-        result: 42.2554,
-        success: true,
-      };
-      let data2 = {
-        success: true,
-        timeseries: true,
-        start_date: "2022-07-20",
-        end_date: "2022-07-27",
-        base: "USD",
-        rates: {
-          "2022-07-20": {
-            GBP: 1.134021,
-          },
-          "2022-07-21": {
-            GBP: 1.134021,
-          },
-          "2022-07-22": {
-            GBP: 1.134021,
-          },
-          "2022-07-23": {
-            GBP: 0.833021,
-          },
-          "2022-07-24": {
-            GBP: 0.834304,
-          },
-          "2022-07-25": {
-            GBP: 0.82957,
-          },
-          "2022-07-26": {
-            GBP: 0.830825,
-          },
-          "2022-07-27": {
-            GBP: 0.822205,
-          },
-        },
-      };
+      // let data = {
+      //   date: "2022-08-09",
+      //   info: {
+      //     rate: 1.134242,
+      //     timestamp: 1660035303,
+      //   },
+      //   query: {
+      //     amount: 50,
+      //     from: "EUR",
+      //     to: "GBP",
+      //   },
+      //   result: 42.2554,
+      //   success: true,
+      // };
 
-      // let data = await response.json();
-      // let data2 = await response2.json();
+      // let data2 = {
+      //   success: true,
+      //   timeseries: true,
+      //   start_date: "2022-07-20",
+      //   end_date: "2022-07-27",
+      //   base: "USD",
+      //   rates: {
+      //     "2022-07-20": {
+      //       GBP: 1.134021,
+      //     },
+      //     "2022-07-21": {
+      //       GBP: 1.134021,
+      //     },
+      //     "2022-07-22": {
+      //       GBP: 1.134021,
+      //     },
+      //     "2022-07-23": {
+      //       GBP: 0.833021,
+      //     },
+      //     "2022-07-24": {
+      //       GBP: 0.834304,
+      //     },
+      //     "2022-07-25": {
+      //       GBP: 0.82957,
+      //     },
+      //     "2022-07-26": {
+      //       GBP: 0.830825,
+      //     },
+      //     "2022-07-27": {
+      //       GBP: 0.822205,
+      //     },
+      //   },
+      // };
+
+      let data = await response.json();
+      let data2 = await response2.json();
       const rateResult = data.result.toFixed(2);
 
       setResult(rateResult);
@@ -165,7 +166,6 @@ function Exchange() {
       `https://api.apilayer.com/fixer/timeseries?start_date=${formattedTime2}&end_date=${formattedTime}&base=${from}&symbols=${to}`
     );
   }
-
 
   //this is the start of the chart
   ChartJS.register(
