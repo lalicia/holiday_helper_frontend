@@ -1,13 +1,8 @@
 # Holiday Helper
 
-## The Team
+[View the live app here](https://holiday-helper.netlify.app/) - please note this app is optimised for mobile viewing
 
-- [@lalicia](https://www.github.com/lalicia)
-- [@mandark1](https://www.github.com/mandark1)
-- [@harryevans1997](https://github.com/harryevans1997)
-- [@hassa09](https://github.com/hassa09)
-- [@Matt994](https://github.com/Matt994)
-- [@JedHumphries](https://github.com/JedHumphries)
+![holidayhelper](https://user-images.githubusercontent.com/102915959/185924205-dd7aaf26-4213-4d40-9d44-72d2f617809e.JPG)
 
 ## The Project
 
@@ -31,6 +26,15 @@ Following early user feedback, the first of these would be an Itinerary Calender
 
 As we would be looking to build out new features that would rely on further integration with notification capabilities and possibly capturing images, we would also look at moving the next build of the app to React Native to better capitalise on mobile functionality.
 
+## The Team
+
+- [@lalicia](https://www.github.com/lalicia)
+- [@mandark1](https://www.github.com/mandark1)
+- [@harryevans1997](https://github.com/harryevans1997)
+- [@hassa09](https://github.com/hassa09)
+- [@Matt994](https://github.com/Matt994)
+- [@JedHumphries](https://github.com/JedHumphries)
+
 ### Technical Information and Instruction
 
-Please see ![DOCUMENTATION](./DOCUMENTATION.md)
+Please see [DOCUMENTATION](./DOCUMENTATION.md)
