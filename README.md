@@ -38,3 +38,5 @@ As we would be looking to build out new features that would rely on further inte
 ### Technical Information and Instruction
 
 Please see [DOCUMENTATION](./DOCUMENTATION.md)
+
+### [View the backend repo here](https://github.com/lalicia/holiday_helper_backend)
